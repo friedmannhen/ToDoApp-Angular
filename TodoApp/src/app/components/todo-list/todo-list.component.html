@@ -1,11 +1,11 @@
 <div class="todo-list">
-   <div class="item-wrap" *ngFor="let item of todos">
-    <mat-card>
-        <mat-card-content>
-            <mat-card-title>{{item.title}}</mat-card-title>
-            <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
-        </mat-card-content>
-    </mat-card>
-    <mat-divider></mat-divider>
-   </div>
+    <div class="item-wrap" *ngFor="let item of todos; let i = index" (click)="onTodoClick(item , i)">
+        <mat-card [ngClass]="{selected:item.selected}">
+            <mat-card-content>
+                <mat-card-title>{{item.title}}</mat-card-title>
+                <mat-card-subtitle>{{item.description}}</mat-card-subtitle>
+            </mat-card-content>
+        </mat-card>
+        <mat-divider></mat-divider>
+    </div>
 </div>
