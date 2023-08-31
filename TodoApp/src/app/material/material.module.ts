@@ -11,6 +11,8 @@ import {
   CdkDragPlaceholder,
   CdkDropList,
 } from '@angular/cdk/drag-drop';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 const modules = [
   MatToolbarModule,
   MatIconModule,
@@ -21,6 +23,8 @@ const modules = [
   CdkDrag,
   CdkDragPlaceholder,
   CdkDropList,
+  MatChipsModule,
+  MatDialogModule,
 ];
 
 @NgModule({

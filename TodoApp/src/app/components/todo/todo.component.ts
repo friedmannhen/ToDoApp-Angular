@@ -22,4 +22,11 @@ export class TodoComponent {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  public toggleCompleteTodo(): void {
+    this.todo.isCompleted = !this.todo.isCompleted ;
+  }
+  public onArchiveTodo(): void {
+    this.todo.isArchived =  !this.todo.isArchived;
+  }
 }

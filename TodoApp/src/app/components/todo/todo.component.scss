@@ -1,0 +1,22 @@
+mat-card-header mat-card-actions {
+  margin-left: auto;
+}
+.main {
+  height: calc(100% - 30px - 50px);
+  box-shadow: rgb(205, 210, 215) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+}
+.main-content{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+mat-card-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.archvie-Btn:hover {
+  background-color: #ddc56d;
+}
+.done-Btn:hover {
+  background-color: #7858b0;
+}

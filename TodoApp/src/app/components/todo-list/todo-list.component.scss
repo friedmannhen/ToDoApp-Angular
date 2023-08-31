@@ -2,16 +2,25 @@
   mat-card {
     background-color: #fafafa;
   }
+.single-todo{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
 
-  mat-card:hover {
+}
+  .single-todo:hover {
     background-color: #f0efef;
     cursor: pointer;
   }
-
+ 
   .selected,
-  mat-card:active {
-    background-color: #d7d7d7;
-    box-shadow: rgba(81, 81, 139, 0.25) 0px 30px 60px -12px inset;
+  .single-todo:active {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  }
+  .completed{
+    text-decoration: line-through;
   }
 }
 
