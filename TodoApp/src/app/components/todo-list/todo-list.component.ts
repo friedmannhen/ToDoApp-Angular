@@ -1,5 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
@@ -11,16 +11,9 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodoListComponent {
   private subsription: Subscription = new Subscription();
-  public todos: Array<ITodo> = [];
+  @Input() todos: Array<ITodo> = [];
   constructor(private todoService: TodoService) {}
 
-  ngOnInit(): void {
-    this.subsription.add(
-      this.todoService.getTodos().subscribe((data) => {
-        this.todos = data;
-      })
-    );
-  }
   public onTodoClick(todo: ITodo, index: number): void {
     this.todoService.setSelectedTodo(todo);
     this.todos.forEach((todo) => {
@@ -30,9 +23,8 @@ export class TodoListComponent {
     });
     this.todos[index].selected = true;
   }
-  ngOnDestroy(): void {}
 
-    drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
   }
 }

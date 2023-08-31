@@ -13,6 +13,8 @@ import {
 } from '@angular/cdk/drag-drop';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 const modules = [
   MatToolbarModule,
   MatIconModule,
@@ -25,6 +27,8 @@ const modules = [
   CdkDropList,
   MatChipsModule,
   MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
 ];
 
 @NgModule({

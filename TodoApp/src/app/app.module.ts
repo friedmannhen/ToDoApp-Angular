@@ -9,6 +9,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
+import { TodoComponentComponent } from './todo-container/todo-container.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NewTodoComponent } from './components/new-todo/new-todo.component';
     TodoListComponent,
     HeaderComponent,
     TodoComponent,
-    NewTodoComponent
+    NewTodoComponent,
+    TodoComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,11 @@
+<div class="todos-component">
+    <div class="list-container">
+        <app-todo-list [todos]="todos"></app-todo-list>
+    </div>
+    <div class="todo-container">
+        <app-todo [todo]="todo"></app-todo>
+    </div>
+    <button (click)="openDialog()" mat-fab color="primary" class="add-new-todo-btn">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
