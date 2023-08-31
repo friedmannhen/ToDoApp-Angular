@@ -1,3 +1,4 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ITodo } from 'src/app/models/todo.interface';
@@ -30,4 +31,8 @@ export class TodoListComponent {
     this.todos[index].selected = true;
   }
   ngOnDestroy(): void {}
+
+    drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+  }
 }
