@@ -1,5 +1,5 @@
 <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
-    <div cdkDrag class="item-wrap" *ngFor="let item of todos; let i = index" (click)="onTodoClick(item , i)">
+    <div cdkDrag class="item-wrap" cdkDragLockAxis="y" [cdkDragStartDelay]="100" *ngFor="let item of todos; let i = index" (click)="onTodoClick(item , i)">
         <mat-card class="single-todo" [ngClass]="{selected:item.selected , completed:item.isCompleted}"
             *ngIf="!item.isArchived">
             <div class="custom-placeholder" *cdkDragPlaceholder></div>

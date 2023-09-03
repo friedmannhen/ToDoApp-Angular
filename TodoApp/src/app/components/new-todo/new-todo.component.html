@@ -1,13 +1,19 @@
 <div class="new-todo-container">
     <h1>Add New Todo</h1>
-    <form #f="" (ngSubmit)="onNewTodoSubmit()">
-        <mat-form-field>
-            <mat-label>Input</mat-label>
-            <input matInput>
+    <form #f="ngForm" (ngSubmit)="onNewTodoSubmit()">
+        <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input ngModel name="title" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea ngModel name="description" matInput></textarea>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Textarea</mat-label>
-            <textarea matInput></textarea>
+            <mat-label>Choose a date</mat-label>
+            <input ngModel name="date" matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
         <button type="submit">Add</button>
     </form>
