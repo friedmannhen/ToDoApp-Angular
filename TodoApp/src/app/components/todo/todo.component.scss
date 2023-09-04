@@ -1,6 +1,4 @@
-mat-card-header mat-card-actions {
-  margin-left: auto;
-}
+
 .main {
   height: calc(100% - 30px - 50px);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -9,6 +7,11 @@ mat-card-header mat-card-actions {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+.dates{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 mat-card-content {
   padding-top: 20px;

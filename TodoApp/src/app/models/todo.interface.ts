@@ -1,8 +1,8 @@
 export interface ITodo {
   id: number;
   title: string;
+  openDate: Date;
   description: string;
-  content: string;
   isCompleted: boolean;
   isArchived: boolean;
   endDate: Date | number | string;

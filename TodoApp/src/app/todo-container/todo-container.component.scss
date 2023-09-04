@@ -7,7 +7,7 @@
 
 .list-container {
   width: 25%;
-  min-width: 160px;
+  min-width: 190px;
   overflow: scroll;
   overflow-y: auto;
   overflow-x: auto;
@@ -15,6 +15,7 @@
 
 .todo-container {
   width: 75%;
+  min-height: 400px;
 }
 .add-new-todo-btn {
   position: fixed;

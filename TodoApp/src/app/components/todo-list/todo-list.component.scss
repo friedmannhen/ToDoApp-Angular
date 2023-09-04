@@ -4,11 +4,14 @@
   }
 .single-todo{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
-
+}
+.open-end-dates{
+  display: flex;
+  gap:30px
 }
   .single-todo:hover {
     background-color: #f0efef;
@@ -21,6 +24,9 @@
   }
   .completed{
     text-decoration: line-through;
+  }
+  .completed-icon{
+    margin-right: 20px;
   }
 }
 

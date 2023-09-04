@@ -1,20 +1,23 @@
 <div class="new-todo-container">
-    <h1>Add New Todo</h1>
-    <form #f="ngForm" (ngSubmit)="onNewTodoSubmit()">
+    <div class="header">
+        <h1>Add New Todo</h1>
+    </div>
+    <form #f="ngForm" class="form" (ngSubmit)="onNewTodoSubmit()">
         <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
-            <input ngModel name="title" matInput>
+            <input ngModel name="title" required matInput>
+            <mat-error *ngIf="f.invalid">Field Is Empty!</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
             <textarea ngModel name="description" matInput></textarea>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Choose a date</mat-label>
+            <mat-label>Choose a deadline</mat-label>
             <input ngModel name="date" matInput [matDatepicker]="picker">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <button type="submit">Add</button>
+        <button type="submit" mat-raised-button color="primary">Submit</button>
     </form>
 </div>

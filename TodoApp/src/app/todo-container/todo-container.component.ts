@@ -35,7 +35,7 @@ export class TodoComponentComponent {
 
   public openDialog(): void {
     const dialogRef = this.dialog.open(NewTodoComponent, {
-      width: '250px',height:'700px'
+      width: '600px',height:'700px'
     });
 
     dialogRef.afterClosed().subscribe((result) => {

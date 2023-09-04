@@ -1,15 +1,15 @@
 <mat-card class="main">
     <div *ngIf="todo && !todo.isArchived" class="main-content">
-        <mat-card-header>
+        <mat-card-header class="dates">
             <mat-card-title>{{todo.title}}</mat-card-title>
-            <mat-card-subtitle>{{todo.description}}</mat-card-subtitle>
+            <mat-card-subtitle>{{todo.openDate | date:"MM/dd/yy 'at' hh:mm a" }}</mat-card-subtitle>
             <mat-card-actions>
                 <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
                     (click)="onArchiveTodo()">Archive</mat-chip-option>
             </mat-card-actions>
         </mat-card-header>
         <mat-card-content>
-            <p>{{todo.content}}</p>
+            <p>{{todo.description}}</p>
         </mat-card-content>
         <mat-card-actions class="bottomline">
             <mat-chip-option highlighted class="done-Btn" [selected]="todo.isCompleted"
