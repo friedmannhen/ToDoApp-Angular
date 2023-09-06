@@ -1,16 +1,18 @@
 <mat-card class="main">
-    <div *ngIf="todo && !todo.isArchived" class="main-content">
+    <div *ngIf="todo" class="main-content">
         <mat-card-header class="header">
             <mat-card-title>{{todo.title}}</mat-card-title>
-            <mat-card-subtitle>Time opened:  {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a" }}</mat-card-subtitle>
+            <mat-card-subtitle>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a" }}</mat-card-subtitle>
             <mat-card-actions>
                 <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
                     (click)="onArchiveTodo()">Archive</mat-chip-option>
             </mat-card-actions>
         </mat-card-header>
         <mat-card-content class="conetent">
-            <div *ngFor="let line of todo.descriptionLines; let i = index"  class="desctiptionLine" (click)="toggleUnderline(i)">
-                <mat-icon [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '#EAEAEA' }">label_important</mat-icon><span  [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
+            <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine" (click)="toggleUnderline(i)">
+                <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '#EAEAEA' }"
+                    *ngIf="line.trim().length">label_important</mat-icon><span
+                    [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
             </div>
         </mat-card-content>
         <mat-card-actions class="bottomline">

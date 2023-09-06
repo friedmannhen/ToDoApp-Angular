@@ -5,7 +5,7 @@
     <form #f="ngForm" class="form" (ngSubmit)="onNewTodoSubmit()">
         <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
-            <input ngModel name="title" required matInput>
+            <input ngModel name="title" maxlength="50" required matInput>
             <mat-error *ngIf="f.invalid">Field Is Empty!</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">

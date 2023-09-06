@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrls: ['./new-todo.component.scss'],
 })
 export class NewTodoComponent {
-  constructor(private todoService: TodoService, public dialog: MatDialog) {}
+  constructor(private todoService: TodoService, public dialog: MatDialog, private _snackBar: MatSnackBar) {}
   @ViewChild('f') form: NgForm;
   ngOnInit(): void {}
 
@@ -32,5 +33,10 @@ export class NewTodoComponent {
     };
     this.todoService.addNewTodo(newTodo);
     this.dialog.closeAll();
+    this._snackBar.open('New Todo Added!', 'close', {
+      horizontalPosition: 'start',
+      verticalPosition: 'bottom',
+      duration: 2000,
+    });
   }
 }
