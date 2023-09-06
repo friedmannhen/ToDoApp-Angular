@@ -19,13 +19,13 @@ export class TodoComponentComponent {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.todoService.getSelectedTodo().subscribe((data) => {
-        this.todo = data;
+      this.todoService.getTodos().subscribe((data) => {
+        this.todos = data;
       })
     );
     this.subscription.add(
-      this.todoService.getTodos().subscribe((data) => {
-        this.todos = data;
+      this.todoService.getSelectedTodo().subscribe((data) => {
+        this.todo = data;
       })
     );
   }

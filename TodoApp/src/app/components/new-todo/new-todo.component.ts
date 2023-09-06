@@ -30,7 +30,6 @@ export class NewTodoComponent {
       isArchived: false,
       selected: false,
     };
-    console.log(newTodo);
     this.todoService.addNewTodo(newTodo);
     this.dialog.closeAll();
   }

@@ -6,6 +6,7 @@ import { ITodo } from '../models/todo.interface';
   providedIn: 'root',
 })
 export class TodoService {
+  constructor() {}
   private todos: Array<ITodo> = [];
   private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(
     this.todos
@@ -13,8 +14,16 @@ export class TodoService {
   private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(
     this.todos.length ? this.todos[0] : null
   );
-  constructor() {}
   public getTodos(): Observable<Array<ITodo>> {
+    if(!this._todoSubject.value.length){
+      const todoString = localStorage.getItem("todos");
+      if(todoString){
+        const existingTodos:Array<ITodo> = JSON.parse(todoString);
+        existingTodos[0].selected = true;
+        this._todoSubject.next(existingTodos);
+        this._singleTodoSubject.next(existingTodos[0]);
+      }
+    }
     return this._todoSubject.asObservable();
   }
 
@@ -29,5 +38,9 @@ export class TodoService {
     const existingTodos: Array<ITodo> = this._todoSubject.value;
     existingTodos.push(newTodo);
     this._todoSubject.next(existingTodos);
+    this.updateLocalStorage();
+  }
+  public updateLocalStorage(){
+    localStorage.setItem("todos",JSON.stringify(this._todoSubject.value));
   }
 }
