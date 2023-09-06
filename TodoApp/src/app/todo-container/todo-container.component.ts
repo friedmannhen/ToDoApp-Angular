@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewTodoComponent } from '../components/new-todo/new-todo.component';
 import { TodoService } from '../services/todo.service';
 import { ITodo } from '../models/todo.interface';
-import { Subscriber, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-todo-container',
   templateUrl: './todo-container.component.html',

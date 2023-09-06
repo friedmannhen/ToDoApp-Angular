@@ -2,7 +2,8 @@ export interface ITodo {
   id: number;
   title: string;
   openDate: Date;
-  description: string;
+  descriptionLines: string[];
+  linesCompleted: boolean[];
   isCompleted: boolean;
   isArchived: boolean;
   endDate: Date | number | string;

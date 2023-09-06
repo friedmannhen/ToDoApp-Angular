@@ -9,11 +9,13 @@ import { ITodo } from 'src/app/models/todo.interface';
 export class TodoComponent {
   @Input() set todo(todo: ITodo) {
     this._todo = todo;
+    // this.descriptionLines = this._todo.description.split('\n');
   }
   private _todo: ITodo;
-  get todo(){
+  get todo() {
     return this._todo;
   }
+  // descriptionLines: String[];
   constructor() {}
   ngOnInit(): void {}
 
@@ -23,4 +25,8 @@ export class TodoComponent {
   public onArchiveTodo(): void {
     this.todo.isArchived = !this.todo.isArchived;
   }
+  public toggleUnderline(index: number): void {
+    this.todo.linesCompleted[index] = !this.todo.linesCompleted[index];
+  }
 }
+
