@@ -19,6 +19,11 @@ export class TodoService {
       const todoString = localStorage.getItem("todos");
       if(todoString){
         const existingTodos:Array<ITodo> = JSON.parse(todoString);
+        existingTodos.forEach((todo) => {
+          if (todo.selected) {
+            todo.selected = false;
+          }
+        });
         existingTodos[0].selected = true;
         this._todoSubject.next(existingTodos);
         this._singleTodoSubject.next(existingTodos[0]);
