@@ -4,17 +4,20 @@
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
 .main-content {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
+
 .header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: #eaeaea;
 }
+
 .desctiptionLine {
   font-family: "Roboto";
   font-size: 17px;
@@ -23,13 +26,15 @@
   align-items: center;
   padding: 2px;
 }
-.underline{
+
+.underline {
   text-decoration: line-through;
 }
 
-.desctiptionLine span:hover {
+.desctiptionLine:hover span {
   background-color: #dadada;
 }
+
 mat-card-content {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -37,16 +42,20 @@ mat-card-content {
   overflow-y: auto;
   overflow-x: auto;
 }
+
 .archvie-Btn:hover {
   background-color: #ddc56d;
 }
+
 .done-Btn:hover {
   background-color: #7858b0;
 }
-.line-icon{
-width:50px;
+
+.line-icon {
+  width: 50px;
 
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
