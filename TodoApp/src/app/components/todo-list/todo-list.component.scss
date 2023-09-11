@@ -5,11 +5,13 @@
     margin-right: 10px;
   }
 }
+.tab-icon {
+  margin-right: 8px;
+}
 .item-wrap {
   mat-card {
     background-color: #fafafa;
   }
-
   .single-todo {
     display: flex;
     flex-wrap: wrap;
