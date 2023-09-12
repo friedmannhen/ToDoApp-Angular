@@ -1,15 +1,23 @@
 <mat-card class="main">
+
+    <div *ngIf="!todo" class="empty-main-content">
+        <h1>
+            SELECT A TASK TO REVIEW
+        </h1>
+    </div>
     <div *ngIf="todo" class="main-content">
         <mat-card-header class="header">
             <mat-card-title>{{todo.title}}</mat-card-title>
-            <mat-card-subtitle>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a" }}</mat-card-subtitle>
+            <mat-card-subtitle><span>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a"
+                    }}</span></mat-card-subtitle>
             <mat-card-actions>
                 <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
                     (click)="onArchiveTodo()">Archive</mat-chip-option>
             </mat-card-actions>
         </mat-card-header>
         <mat-card-content class="conetent">
-            <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine" (click)="toggleUnderline(i)">
+            <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine"
+                (click)="toggleUnderline(i)">
                 <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '#EAEAEA' }"
                     *ngIf="line.trim().length">label_important</mat-icon><span
                     [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
@@ -20,4 +28,8 @@
                 (click)="toggleCompleteTodo()">Done</mat-chip-option>
         </mat-card-actions>
     </div>
+
+    <span *ngIf="todo"> Task ID: {{todo.id}} [Generated with uuid]</span>
+    <button *ngIf="todo && todo.isArchived" mat-raised-button color="warn" (click)="PermenantlyDelete()">Permenantly
+        Delete!</button>
 </mat-card>

@@ -11,14 +11,12 @@ export class TodoService {
   private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(
     this.todos
   );
-  private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(
-    this.todos.length ? this.todos[0] : null
-  );
+  private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(null);
   public getTodos(): Observable<Array<ITodo>> {
-    if(!this._todoSubject.value.length){
-      const todoString = localStorage.getItem("todos");
-      if(todoString){
-        const existingTodos:Array<ITodo> = JSON.parse(todoString);
+    if (!this._todoSubject.value.length) {
+      const todoString = localStorage.getItem('todos');
+      if (todoString) {
+        const existingTodos: Array<ITodo> = JSON.parse(todoString);
         existingTodos.forEach((todo) => {
           if (todo.selected) {
             todo.selected = false;
@@ -26,7 +24,7 @@ export class TodoService {
         });
         existingTodos[0].selected = true;
         this._todoSubject.next(existingTodos);
-        this._singleTodoSubject.next(existingTodos[0]);
+        // this._singleTodoSubject.next(existingTodos[0]); // set first item to be displayed on init
       }
     }
     return this._todoSubject.asObservable();
@@ -45,7 +43,18 @@ export class TodoService {
     this._todoSubject.next(existingTodos);
     this.updateLocalStorage();
   }
-  public updateLocalStorage(){
-    localStorage.setItem("todos",JSON.stringify(this._todoSubject.value));
+  public removePermenantly(TodoToRemove: ITodo): void {
+    const existingTodos: Array<ITodo> = this._todoSubject.value;
+    const index: number = existingTodos.indexOf(TodoToRemove);
+    existingTodos.splice(index, 1);
+    this._todoSubject.next(existingTodos);
+    if (existingTodos.length) {
+      this.updateLocalStorage();
+    } else {
+      localStorage.clear();
+    }
+  }
+  public updateLocalStorage() {
+    localStorage.setItem('todos', JSON.stringify(this._todoSubject.value));
   }
 }

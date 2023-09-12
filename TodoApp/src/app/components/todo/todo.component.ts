@@ -10,13 +10,11 @@ import { TodoService } from 'src/app/services/todo.service';
 export class TodoComponent {
   @Input() set todo(todo: ITodo) {
     this._todo = todo;
-    // this.descriptionLines = this._todo.description.split('\n');
   }
   private _todo: ITodo;
   get todo() {
     return this._todo;
   }
-  // descriptionLines: String[];
   constructor( private todoService: TodoService) {}
   ngOnInit(): void {}
 
@@ -31,6 +29,10 @@ export class TodoComponent {
   public toggleUnderline(index: number): void {
     this.todo.linesCompleted[index] = !this.todo.linesCompleted[index];
     this.todoService.updateLocalStorage();
+  }
+  public PermenantlyDelete():void{
+    this.todoService.removePermenantly(this.todo);
+    this.todo = null;
   }
 }
 

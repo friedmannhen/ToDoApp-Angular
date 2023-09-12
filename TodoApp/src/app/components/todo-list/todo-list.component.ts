@@ -1,6 +1,5 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 
@@ -10,7 +9,6 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent {
-  private subsription: Subscription = new Subscription();
   @Input() todos: Array<ITodo> = [];
   constructor(private todoService: TodoService) {}
 
