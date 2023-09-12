@@ -1,25 +1,25 @@
-<div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
-    <mat-tab-group>
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <mat-icon class="tab-icon"><span class="material-symbols-outlined">
-                        format_list_numbered
-                    </span></mat-icon>
-                Active
-            </ng-template>
-            <mat-card *ngIf="!todos.length">
-                <mat-card-content class="empty-card">
-                    <mat-card-title class="empty-card-title"><mat-icon>view_comfy</mat-icon>Empty
-                        List...</mat-card-title>
-                </mat-card-content>
-            </mat-card>
+<mat-tab-group>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon"><span class="material-symbols-outlined">
+                    format_list_numbered
+                </span></mat-icon>
+            Active
+        </ng-template>
+        <mat-card *ngIf="!todos.length">
+            <mat-card-content class="empty-card">
+                <mat-card-title class="empty-card-title"><mat-icon>view_comfy</mat-icon>Empty
+                    List...</mat-card-title>
+            </mat-card-content>
+        </mat-card>
+        <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
             <div cdkDrag class="item-wrap" cdkDragLockAxis="y" [cdkDragStartDelay]="100"
                 *ngFor="let item of todos; let i = index" (click)="onTodoClick(item , i)">
                 <mat-card class="single-todo" [ngClass]="{selected:item.selected }" *ngIf="!item.isArchived">
                     <div class="custom-placeholder" *cdkDragPlaceholder></div>
                     <mat-card-content>
-                        <mat-card-title [ngClass]="{completed:item.isCompleted}">{{i+1}}.
-                            {{item.title}}</mat-card-title>
+                        <mat-card-title><span [ngClass]="{completed:item.isCompleted}">
+                                {{item.title}}</span></mat-card-title>
                         <mat-card-subtitle class="open-end-dates">
                             <span>Opened: {{ item.openDate |date:"dd/MM/yy"}}</span>
                             <span *ngIf="item.endDate">Deadline: {{item.endDate | date:"dd/MM/yy"}}</span>
@@ -48,27 +48,29 @@
                 </mat-card>
                 <mat-divider></mat-divider>
             </div>
+        </div>
+    </mat-tab>
 
-        </mat-tab>
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">archive</mat-icon>
+            Archive
+        </ng-template>
+        <mat-card *ngIf="!todos.length">
+            <mat-card-content class="empty-card">
+                <mat-card-title class="empty-card-title"><mat-icon>view_comfy</mat-icon>Empty
+                    List...</mat-card-title>
+            </mat-card-content>
+        </mat-card>
+        <div cdkDropList class="todo-list" (cdkDropListDropped)="drop($event)">
 
-        <mat-tab>
-            <ng-template mat-tab-label>
-                <mat-icon class="tab-icon">archive</mat-icon>
-                Archive
-            </ng-template>
-            <mat-card *ngIf="!todos.length">
-                <mat-card-content class="empty-card">
-                    <mat-card-title class="empty-card-title"><mat-icon>view_comfy</mat-icon>Empty
-                        List...</mat-card-title>
-                </mat-card-content>
-            </mat-card>
             <div cdkDrag class="item-wrap" cdkDragLockAxis="y" [cdkDragStartDelay]="100"
                 *ngFor="let item of todos; let i = index" (click)="onTodoClick(item , i)">
                 <mat-card class="single-todo" [ngClass]="{selected:item.selected }" *ngIf="item.isArchived">
                     <div class="custom-placeholder" *cdkDragPlaceholder></div>
                     <mat-card-content>
-                        <mat-card-title [ngClass]="{completed:item.isCompleted}">{{i+1}}.
-                            {{item.title}}</mat-card-title>
+                        <mat-card-title><span [ngClass]="{completed:item.isCompleted}">
+                                {{item.title}}</span></mat-card-title>
                         <mat-card-subtitle class="open-end-dates">
                             <span>Opened: {{ item.openDate |date:"dd/MM/yy"}}</span>
                             <span *ngIf="item.endDate">Deadline: {{item.endDate | date:"dd/MM/yy"}}</span>
@@ -97,7 +99,6 @@
                 </mat-card>
                 <mat-divider></mat-divider>
             </div>
-        </mat-tab>
-    </mat-tab-group>
-
-</div>
+        </div>
+    </mat-tab>
+</mat-tab-group>
