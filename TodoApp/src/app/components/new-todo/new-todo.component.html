@@ -14,9 +14,10 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label>Choose A Deadline</mat-label>
-            <input ngModel name="date" matInput [matDatepicker]="picker">
+            <input ngModel name="date"  matInput [matDatepicker]="picker" required [min]="minDate">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="f.invalid">Date must be greater than the current date.</mat-error>
         </mat-form-field>
         <button type="submit" mat-raised-button color="primary">Submit</button>
     </form>
