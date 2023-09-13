@@ -33,7 +33,9 @@ export class CountDownComponent {
       })
     );
   }
-
+ngOnDestroy(): void {
+  this.subsription.unsubscribe();
+}
   private getTimeDiff(): void {
     this.timeDiff =
       new Date(this._deadlineDate).getTime() - new Date().getTime();
