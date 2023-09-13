@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 const modules = [
   MatToolbarModule,
   MatIconModule,
@@ -39,6 +40,7 @@ const modules = [
   MatTooltipModule,
   MatSnackBarModule,
   MatTabsModule,
+  MatProgressBarModule,
 ];
 
 @NgModule({

@@ -8,8 +8,9 @@
     <div *ngIf="todo" class="main-content">
         <mat-card-header class="header">
             <mat-card-title>{{todo.title}}</mat-card-title>
-            <mat-card-subtitle><span>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a"
-                    }}</span></mat-card-subtitle>
+            <app-count-down *ngIf="todo && todo.endDate" [deadlineDate]="todo.endDate"></app-count-down>
+            <mat-card-subtitle><span>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a"}}</span>
+            </mat-card-subtitle>
             <mat-card-actions>
                 <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
                     (click)="onArchiveTodo()">Archive</mat-chip-option>
@@ -28,7 +29,6 @@
                 (click)="toggleCompleteTodo()">Done</mat-chip-option>
         </mat-card-actions>
     </div>
-    <app-count-down *ngIf="todo.endDate" [deadlineDate]="todo.endDate"></app-count-down>
     <span *ngIf="todo"> Task ID: {{todo.id}} [Generated with uuid]</span>
     <button *ngIf="todo && todo.isArchived" mat-raised-button color="warn" (click)="PermenantlyDelete()">Permenantly
         Delete!</button>
