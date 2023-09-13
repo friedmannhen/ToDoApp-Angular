@@ -6,6 +6,6 @@ export interface ITodo {
   linesCompleted: boolean[];
   isCompleted: boolean;
   isArchived: boolean;
-  endDate: Date | number | string;
+  endDate: Date ;
   selected: boolean;
 }

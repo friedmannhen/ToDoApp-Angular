@@ -28,7 +28,7 @@
                 (click)="toggleCompleteTodo()">Done</mat-chip-option>
         </mat-card-actions>
     </div>
-
+    <app-count-down *ngIf="todo.endDate" [deadlineDate]="todo.endDate"></app-count-down>
     <span *ngIf="todo"> Task ID: {{todo.id}} [Generated with uuid]</span>
     <button *ngIf="todo && todo.isArchived" mat-raised-button color="warn" (click)="PermenantlyDelete()">Permenantly
         Delete!</button>

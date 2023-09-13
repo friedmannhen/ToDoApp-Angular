@@ -27,7 +27,7 @@ export class NewTodoComponent {
       openDate: new Date(),
       descriptionLines: formValues.description.split('\n'),
       linesCompleted: Array.from({ length: formValues.description.split('\n').length }, () => false),
-      endDate: formValues.date,
+      endDate: formValues.date=="" ? null : formValues.date ,
       isCompleted: false,
       isArchived: false,
       selected: false,

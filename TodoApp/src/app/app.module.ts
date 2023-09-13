@@ -10,6 +10,7 @@ import { TodoComponent } from './components/todo/todo.component';
 import { NewTodoComponent } from './components/new-todo/new-todo.component';
 import { TodoComponentComponent } from './todo-container/todo-container.component';
 import { FormsModule } from '@angular/forms';
+import { CountDownComponent } from './components/count-down/count-down.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     TodoComponent,
     NewTodoComponent,
-    TodoComponentComponent
+    TodoComponentComponent,
+    CountDownComponent
   ],
   imports: [
     BrowserModule,
