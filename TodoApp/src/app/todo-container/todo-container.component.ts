@@ -38,8 +38,8 @@ export class TodoComponentComponent {
       width: '600px',height:'700px'
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    //   console.log('The dialog was closed');
+    // });
   }
 }
