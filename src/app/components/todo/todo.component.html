@@ -16,9 +16,17 @@
                     (click)="onArchiveTodo()">Archive</mat-chip-option>
             </mat-card-actions>
         </mat-card-header>
-        <mat-card-content class="conetent">
+        <mat-card-content class="content">
+            <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
+            <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All" color="primary" aria-label="Example mini fab with a heart icon">
+                <mat-icon>done_all</mat-icon>
+              </button>
+              <button (click)="toggleAlllineUnComplete()" class="unmark-all" mat-mini-fab matTooltip="Unmark All" color="accent" aria-label="Example mini fab with a heart icon">
+                <mat-icon>remove_done</mat-icon>
+              </button>
+            </div>
             <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine"
-                (click)="toggleUnderline(i)">
+                (click)="togglelineComplete(i)">
                 <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '#EAEAEA' }"
                     *ngIf="line.trim().length">label_important</mat-icon><span
                     [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
@@ -29,7 +37,7 @@
                 (click)="toggleCompleteTodo()">Done</mat-chip-option>
         </mat-card-actions>
     </div>
-    <span *ngIf="todo"> Task ID: {{todo.id}} [Generated with uuid]</span>
+    <span class="uuid-id" *ngIf="todo"> Task ID: {{todo.id}} [Generated with uuid]</span>
     <button *ngIf="todo && todo.isArchived" mat-raised-button color="warn" (click)="PermenantlyDelete()">Permenantly
         Delete!</button>
 </mat-card>

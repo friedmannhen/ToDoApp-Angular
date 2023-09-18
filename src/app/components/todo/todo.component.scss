@@ -4,17 +4,33 @@
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
-.main-content , .empty-main-content{
+.content {
+  position: relative;
+  .Mark-All-container {
+    display: flex;
+    justify-content: flex-end;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    gap: 10px;
+    .mark-all,
+    .unmark-all {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+.main-content,
+.empty-main-content {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.empty-main-content{
+.empty-main-content {
   justify-content: center;
   align-items: center;
 }
-.empty-main-content h1{
+.empty-main-content h1 {
   rotate: -20deg;
   text-align: center;
 }
@@ -60,9 +76,12 @@ mat-card-content {
 
 .line-icon {
   width: 50px;
-
 }
-
+.uuid-id{
+position: absolute;
+bottom: 10px;
+right: 10px;
+}
 ::-webkit-scrollbar {
   width: 8px;
 }

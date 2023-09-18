@@ -15,8 +15,9 @@ export class TodoComponent {
   get todo() {
     return this._todo;
   }
-  constructor( private todoService: TodoService) {}
-  ngOnInit(): void {}
+  constructor(private todoService: TodoService) {}
+  ngOnInit(): void {
+  }
 
   public toggleCompleteTodo(): void {
     this.todo.isCompleted = !this.todo.isCompleted;
@@ -24,15 +25,28 @@ export class TodoComponent {
   }
   public onArchiveTodo(): void {
     this.todo.isArchived = !this.todo.isArchived;
+    console.log(this.todo.descriptionLines.length)
+
     this.todoService.updateLocalStorage();
   }
-  public toggleUnderline(index: number): void {
+  public togglelineComplete(index: number): void {
     this.todo.linesCompleted[index] = !this.todo.linesCompleted[index];
     this.todoService.updateLocalStorage();
   }
-  public PermenantlyDelete():void{
+  public toggleAlllineComplete(): void {
+    for (let index = 0; index < this.todo.linesCompleted.length; index++) {
+      this.todo.linesCompleted[index] = true;
+    }
+    this.todoService.updateLocalStorage();
+  }
+  public toggleAlllineUnComplete(): void {
+    for (let index = 0; index < this.todo.linesCompleted.length; index++) {
+      this.todo.linesCompleted[index] = false;
+    }
+    this.todoService.updateLocalStorage();
+  }
+  public PermenantlyDelete(): void {
     this.todoService.removePermenantly(this.todo);
     this.todo = null;
   }
 }
-
