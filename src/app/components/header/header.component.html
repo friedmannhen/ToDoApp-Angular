@@ -1,7 +1,12 @@
-<mat-toolbar>
-    <span>ToDo</span>
-    <span class="spacer"></span>
-    <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>
+<mat-toolbar class="header-main">
+  <div class="theme-btn">
+    <mat-slide-toggle [(ngModel)]="isChecked" (click)="toggleTheme()" class="theme">
+      <mat-icon>dark_mode</mat-icon>
+    </mat-slide-toggle>
+    <span class="them-btn-text">Dark Mode</span>
+  </div>
+  <span >ToDo</span>
+  <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>

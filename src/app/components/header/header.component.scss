@@ -1,4 +1,22 @@
-.spacer {
-    flex: 1 1 auto;
+@import "/src//styles/theme.scss";
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  .theme-btn {
+    color: $background-dark;
+    mat-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: $background-dark;
+    }
+    .them-btn-text {
+      font-size: 12px;
+    }
   }
-  
+}
