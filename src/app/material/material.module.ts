@@ -4,7 +4,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
 import {
   CdkDrag,
   DragDropModule,
@@ -27,7 +26,6 @@ const modules = [
   MatIconModule,
   MatButtonModule,
   MatCardModule,
-  MatDividerModule,
   DragDropModule,
   CdkDrag,
   CdkDragPlaceholder,
@@ -50,4 +48,4 @@ const modules = [
   imports: [CommonModule, modules],
   exports: modules,
 })
-export class MaterialModule {}
+export class MaterialModule { }
