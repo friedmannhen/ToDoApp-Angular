@@ -8,6 +8,8 @@
 .list-container {
   width: 27%;
   min-width: 210px;
+  border-radius: 10px;
+  padding: 4px;
   overflow: scroll;
   overflow-y: auto;
   overflow-x: auto;
@@ -38,4 +40,8 @@
 
 ::-webkit-scrollbar-track {
   background-color: #ddd;
+}
+
+.dark-theme *{
+  color:white
 }

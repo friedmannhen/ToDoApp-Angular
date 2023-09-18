@@ -14,8 +14,12 @@ export class NewTodoComponent {
   constructor(private todoService: TodoService, public dialog: MatDialog, private _snackBar: MatSnackBar) {}
   @ViewChild('f') form: NgForm;
   public minDate = new Date();
-  ngOnInit(): void {}
+  public isChecked: boolean = false; 
+  public isDark: boolean ;
+  ngOnInit(): void {
+    this.isDark =  this.todoService.isDarkMode();
 
+  }
   public onNewTodoSubmit() {
     if (!this.form.valid) {
       return;

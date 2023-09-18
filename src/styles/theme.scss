@@ -1,0 +1,90 @@
+// theme-variables
+
+// Primary Colors
+$primary: #2196f3;
+$primary-light: #64b5f6;
+$primary-dark: #9db2bf;
+
+// Accent Colors
+$accent: #ffc107;
+$accent-light: #ffd54f;
+$accent-dark: #ffa000;
+
+// Background Colors
+$background: #ffffff;
+$background-dark: #526d82;
+$background-dark-secondary: #9db2bf;
+$background-dark-body: #dde6ed;
+
+// Text Colors
+$text-primary: #333333;
+$text-secondary: #666666;
+$text-on-primary: #ffffff;
+$text-on-secondary: #ffffff;
+
+// Define Dark Theme Variables
+$dark-primary: #2196f3;
+$dark-accent: #ffc107;
+$dark-background: #526d82;
+$dark-text-primary: #ffffff;
+$dark-text-secondary: #cccccc;
+
+body.dark-theme {
+  background-color: $background-dark-body;
+  app-root {
+    .app {
+      app-header {
+        .header-main {
+          background-color: $dark-background;
+          color: $dark-text-primary;
+          .theme-btn {
+            .them-btn-text {
+              color: $dark-accent;
+            }
+            mat-icon {
+              color: $dark-accent !important;
+            }
+          }
+        }
+      }
+      main {
+        .todos-component {
+          .list-container {
+            background-color: $background-dark-secondary;
+            app-todo-list {
+              // .mdc-tab__text-label{    // *** tabs label***
+              // color: $dark-text-primary !important;
+              // }
+              mat-card {
+                background-color: $background-dark-body;
+              }
+            }
+          }
+          app-todo{
+            mat-card-header{
+            background-color: $background-dark-secondary;
+
+            }
+            mat-card-content,.bottomline,.main-content,.empty-main-content{
+              
+            background-color: $background-dark-body;
+          }
+          }
+
+        }
+      }
+    }
+  }
+  .mat-mdc-dialog-surface { //add new todo popup
+    background-color: $background-dark;
+    mat-label{
+      color:$dark-text-primary;
+      font-size: 14px;
+    }
+    .mat-mdc-text-field-wrapper{
+    background-color: $background-dark;
+
+    }
+
+  }
+}

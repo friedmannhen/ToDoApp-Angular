@@ -12,6 +12,8 @@ export class TodoService {
     this.todos
   );
   private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(null);
+  private isDarkTheme = false;
+
   public getTodos(): Observable<Array<ITodo>> {
     if (!this._todoSubject.value.length) {
       const todoString = localStorage.getItem('todos');
@@ -56,5 +58,22 @@ export class TodoService {
   }
   public updateLocalStorage() {
     localStorage.setItem('todos', JSON.stringify(this._todoSubject.value));
+  }
+
+
+
+
+  
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.updateTheme();
+  }
+
+  isDarkMode() {
+    return this.isDarkTheme;
+  }
+
+  private updateTheme() {
+    document.body.classList.toggle('dark-theme', this.isDarkTheme);
   }
 }
