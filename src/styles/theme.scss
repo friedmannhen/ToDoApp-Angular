@@ -17,17 +17,17 @@ $background-dark-secondary: #9db2bf;
 $background-dark-body: #dde6ed;
 
 // Text Colors
-$text-primary: #333333;
-$text-secondary: #666666;
+$text-primary: #000000;
+$text-secondary: #ffffff;
 $text-on-primary: #ffffff;
 $text-on-secondary: #ffffff;
 
 // Define Dark Theme Variables
-$dark-primary: #2196f3;
+$dark-primary: #27374D;
 $dark-accent: #ffc107;
 $dark-background: #526d82;
 $dark-text-primary: #ffffff;
-$dark-text-secondary: #cccccc;
+$dark-text-secondary: #9DB2BF;
 
 body.dark-theme {
   background-color: $background-dark-body;
@@ -60,31 +60,37 @@ body.dark-theme {
               }
             }
           }
-          app-todo{
-            mat-card-header{
-            background-color: $background-dark-secondary;
-
+          app-todo {
+            mat-card-header {
+              background-color: $background-dark-secondary;
             }
-            mat-card-content,.bottomline,.main-content,.empty-main-content{
-              
-            background-color: $background-dark-body;
+            mat-card-content,
+            .bottomline,
+            .main-content,
+            .empty-main-content {
+              background-color: $background-dark-body;
+            }
+            mat-card-content {
+              .desctiptionLine {
+                mat-icon{
+                  color: $dark-text-secondary;
+                }
+              }
+            }
           }
-          }
-
         }
       }
     }
   }
-  .mat-mdc-dialog-surface { //add new todo popup
+  .mat-mdc-dialog-surface {
+    //add new todo popup
     background-color: $background-dark;
-    mat-label{
-      color:$dark-text-primary;
+    mat-label {
+      color: $dark-text-primary;
       font-size: 14px;
     }
-    .mat-mdc-text-field-wrapper{
-    background-color: $background-dark;
-
+    .mat-mdc-text-field-wrapper {
+      background-color: $background-dark;
     }
-
   }
 }

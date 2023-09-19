@@ -27,7 +27,7 @@
             </div>
             <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine"
                 (click)="togglelineComplete(i)">
-                <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '#EAEAEA' }"
+                <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
                     *ngIf="line.trim().length">label_important</mat-icon><span
                     [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
             </div>
