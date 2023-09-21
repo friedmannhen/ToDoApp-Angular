@@ -7,5 +7,7 @@ export interface ITodo {
   isCompleted: boolean;
   isArchived: boolean;
   endDate: Date ;
+  endTime:string;
   selected: boolean;
+  timesOver:boolean;
 }

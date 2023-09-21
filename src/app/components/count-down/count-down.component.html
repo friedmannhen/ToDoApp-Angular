@@ -1,18 +1,19 @@
 <div class="count-down-container">
     <h1>Remaining Time:</h1>
     <div *ngIf="( days || hours||  minutes || seconds); else loader" class="counter">
-        <h2>{{days}}:{{hours > 9 ? hours:"0" + hours}}:{{minutes > 9 ? minutes:"0" + minutes}}:{{seconds > 9 ?
-            seconds:"0" + seconds}}
+        <h2>{{days}}:{{hours > 9 ? hours:"0" + hours}}:{{minutes > 9 ?
+            minutes:"0" + minutes}}:{{seconds > 9 ?
+            seconds:"0" + seconds}}&nbsp;&nbsp;
+            <span style="font-size: 13px;">[{{_todo.endDate | date:"dd/MM/yy"}} at {{_todo.endTime}}]</span>
         </h2>
     </div>
+    <div *ngIf="timesOver" class="counter">
+        <h2 style="color:red">00:00:00:00</h2>
+    </div>
     <ng-template #loader>
-        <div class="loader">
+        <div *ngIf="!timesOver" class="loader">
             <h4>Loading...</h4>
             <mat-progress-bar mode="indeterminate"></mat-progress-bar>
         </div>
     </ng-template>
-    <!-- <div class="proggres-bar">
-        {{100}}::::::::{{progress}}
-        <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
-    </div> -->
 </div>

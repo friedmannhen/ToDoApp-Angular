@@ -5,14 +5,13 @@
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .content {
-  position: relative;
+  height: 100%;
   .Mark-All-container {
+    width: fit-content;
     display: flex;
     justify-content: flex-end;
-    position: absolute;
-    top: 20px;
-    right: 20px;
     gap: 10px;
+    margin-left: auto;
     .mark-all,
     .unmark-all {
       width: 30px;
@@ -67,7 +66,7 @@ border-top-right-radius: 10px;
   text-decoration: line-through;
 }
 
-.desctiptionLine:hover span {
+.desctiptionLine span:hover{
   background-color: #dadada;
 }
 
@@ -96,19 +95,4 @@ position: absolute;
 bottom: 10px;
 right: 10px;
 }
-::-webkit-scrollbar {
-  width: 8px;
-}
 
-::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #ddd;
-}

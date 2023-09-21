@@ -9,14 +9,10 @@ import { TodoService } from 'src/app/services/todo.service';
 export class HeaderComponent {
   constructor(private todoService: TodoService) {}
   public isChecked: boolean = false; 
-  public isDark: boolean ;
   ngOnInit(): void {
-    this.isDark =  this.todoService.isDarkMode();
 
   }
-  public toggleTheme(): void {
-    this.todoService.toggleTheme();
-    this.isDark =  this.todoService.isDarkMode();
-    console.log("test")
+  public toggleTheme(themeType:string): void {
+    this.todoService.toggleTheme(themeType);
   }
 }

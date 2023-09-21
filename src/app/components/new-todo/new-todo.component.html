@@ -1,4 +1,4 @@
-<div class="new-todo-container" [ngClass]="{'dark-theme': isDark}">
+<div class="new-todo-container">
     <div class="header">
         <h1>Add New Todo</h1>
     </div>
@@ -12,13 +12,23 @@
             <mat-label>Description</mat-label>
             <textarea ngModel name="description" matInput></textarea>
         </mat-form-field>
-        <mat-form-field>
-            <mat-label>Choose A Deadline</mat-label>
-            <input ngModel name="date"  matInput [matDatepicker]="picker" [min]="minDate">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-            <mat-error *ngIf="f.invalid">Date must be greater than the current date.</mat-error>
-        </mat-form-field>
+        <div class="deadline">
+            <mat-form-field class="date">
+                <mat-label>Deadline Date </mat-label>
+                <input ngModel name="date" matInput [matDatepicker]="picker" [min]="minDate"
+                    (dateChange)="handleDateSelection($event)">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="f.invalid">Date must be greater than the current date.</mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="selectedDate" class="time">
+                <mat-label>Deadline Time</mat-label>
+                <mat-icon>schedule</mat-icon>
+                <input value="00:00" [disabled]="!selectedDate" ngModel name="time" matInput aria-label="24hr format"
+                    [ngxTimepicker]="toggleIcon" [format]="24" readonly>
+                <ngx-material-timepicker [theme]="isDark ?  darkTheme  : null" #toggleIcon></ngx-material-timepicker>
+            </mat-form-field>
+        </div>
         <button type="submit" mat-raised-button color="primary">Submit</button>
     </form>
 </div>

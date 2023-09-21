@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Subscription, interval, isEmpty } from 'rxjs';
+import { ITodo } from 'src/app/models/todo.interface';
+import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
   selector: 'app-count-down',
@@ -7,38 +9,61 @@ import { Subscription, interval, isEmpty } from 'rxjs';
   styleUrls: ['./count-down.component.scss'],
 })
 export class CountDownComponent {
-  constructor() {}
-  @Input() set deadlineDate(deadlineDate: Date) {
-    this._deadlineDate = deadlineDate;
+  constructor(private todoService: TodoService) {}
+  @Input() set todo(todo: ITodo) {
+    // this._deadlineDate = deadlineDate;
+    this._todo = todo;
     // console.log(deadlineDate);
   }
   private subsription: Subscription = new Subscription();
-  public _deadlineDate: Date;
+  public _todo: ITodo;
+  // public _deadlineDate: Date;
   private milliSecondsInASecond: number = 1000;
   private secondsInAMinute: number = 60;
   private minutesInAHour: number = 60;
   private hoursInADay: number = 24;
+  private deadlineTime: number;
   public timeDiff: number;
-  public progress: number;
   public seconds: number;
   public minutes: number;
   public hours: number;
   public days: number;
+  public timesOver: boolean = false;
+  public millisecondsPerHour: number = 60 * 60 * 1000; // 1 hour = 60 minutes * 60 seconds * 1000 milliseconds
+  public millisecondsPerMinute: number = 60 * 1000; // 1 minute = 60 seconds * 1000 milliseconds
 
   ngOnInit(): void {
+    this.deadlineTime = this.timeToMilliseconds(this._todo.endTime);
     this.subsription.add(
       interval(1000).subscribe(() => {
         this.getTimeDiff();
-        this.progress =  this.hours;
       })
     );
   }
-ngOnDestroy(): void {
-  this.subsription.unsubscribe();
-}
+  ngOnDestroy(): void {
+    this.subsription.unsubscribe();
+  }
+  private timeToMilliseconds(timeString: string): number {
+    if (timeString == '') return 0;
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const totalMilliseconds =
+      hours * this.millisecondsPerHour + minutes * this.millisecondsPerMinute;
+    return totalMilliseconds;
+  }
+
   private getTimeDiff(): void {
     this.timeDiff =
-      new Date(this._deadlineDate).getTime() - new Date().getTime();
+      new Date(this._todo.endDate).getTime() +
+      this.deadlineTime -
+      new Date().getTime();
+    if (this.timeDiff <= 0) {
+      this.days = 0;
+      this.hours = 0;
+      this.minutes = 0;
+      this.seconds = 0;
+      this.timesOver = true;
+      return;
+    }
     this.setTimeUnits(this.timeDiff);
   }
   private setTimeUnits(timeDiff: number) {
