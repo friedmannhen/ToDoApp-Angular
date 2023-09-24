@@ -23,32 +23,38 @@ $dark-text-secondary: #828383;
 
 body.dark-theme {
   background-color: $background-dark-body;
+
   app-root {
     .app {
       app-header {
         .header-main {
           background-color: $background-dark;
           color: $dark-text-primary;
-          .theme-btn {
-            .them-btn-text {
-              color: $dark-accent;
-            }
+
+          mat-button-toggle {
+            background-color: $background-dark-body;
+
             mat-icon {
-              color: $dark-accent !important;
+              color: $dark-text-secondary
             }
           }
         }
       }
+
       main {
         color: $dark-text-primary;
+
         .todos-component {
           .list-container {
+
             .selected,
             .single-todo:active {
               box-shadow: $accent-dark 0px 20px 60px -15px inset,
-           
+
             }
+
             background-color: $background-dark-secondary;
+
             .mat-mdc-tab-group,
             .mat-mdc-tab-nav-bar {
               --mdc-tab-indicator-active-indicator-color: #ffa000;
@@ -59,40 +65,50 @@ body.dark-theme {
                 // *** tabs label***
                 color: $accent !important;
               }
+
               color: $dark-text-primary;
+
               mat-card {
                 background-color: $background-dark-body;
+
                 mat-card-content {
                   mat-card-subtitle {
                     color: $dark-text-secondary;
                   }
                 }
               }
+
               .single-todo:hover {
                 background-color: $primary-dark;
               }
             }
           }
+
           app-todo {
             mat-card-header {
               background-color: $background-dark-secondary;
+
               app-count-down {
                 h1 {
                   color: $dark-text-primary;
                 }
+
                 h2 {
                   color: $dark-text-secondary;
                 }
               }
+
               mat-card-subtitle {
                 color: $dark-text-secondary;
               }
             }
+
             mat-card-content,
             .main-content,
             .empty-main-content {
               background-color: $background-dark-body;
             }
+
             mat-card-content {
               .desctiptionLine {
                 mat-icon {
@@ -104,30 +120,38 @@ body.dark-theme {
         }
       }
     }
+
     color: $dark-text-secondary;
   }
+
   //add new todo popup
   .mat-mdc-dialog-surface {
     color: $dark-text-primary;
 
     background-color: $background-dark-body;
+
     mat-label {
       color: $dark-text-primary;
       font-size: 14px;
     }
+
     input {
       color: $dark-text-primary;
     }
+
     .mat-mdc-text-field-wrapper {
       background-color: $background-dark-secondary;
+
       input {
         color: $dark-text-primary !important;
       }
+
       textarea {
         color: $dark-text-primary;
       }
     }
   }
+
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -142,7 +166,7 @@ body.dark-theme {
   }
 
   ::-webkit-scrollbar-track {
-    background-color:#a3afb8;
+    background-color: #a3afb8;
   }
 }
 
@@ -165,52 +189,62 @@ $grey-background: #526d82;
 $grey-text-primary: #000000;
 $grey-text-secondary: #9DB2BF;
 
-body.grey-theme{
+body.grey-theme {
   background-color: $background-grey-body;
+
   app-root {
     .app {
       app-header {
         .header-main {
           background-color: $background-grey;
           color: $grey-text-primary;
-          .theme-btn {
-            .them-btn-text {
-              color: $dark-accent;
-            }
+
+          mat-button-toggle {
+            background-color: $background-grey-secondary;
+
             mat-icon {
-              color: $dark-accent !important;
+              color: $grey-primary
             }
           }
+
         }
       }
+
       main {
         .todos-component {
           .list-container {
             background-color: $background-grey-secondary;
+
             app-todo-list {
               color: $grey-text-primary;
+
               mat-card {
                 background-color: $background-grey-body;
               }
             }
           }
+
           app-todo {
             mat-card-header {
               background-color: $background-grey-secondary;
+
               app-count-down {
                 h1 {
                   color: $grey-text-primary;
                 }
               }
+
               mat-card-subtitle {
                 color: $grey-text-secondary;
               }
             }
+
             mat-card-content,
             .main-content,
             .empty-main-content {
               background-color: $background-grey-body;
             }
+
             mat-card-content {
               .desctiptionLine {
                 mat-icon {
@@ -223,23 +257,29 @@ body.grey-theme{
       }
     }
   }
+
   //add new todo popup
   .mat-mdc-dialog-surface {
     color: $grey-text-primary;
 
     background-color: $background-grey-body;
+
     mat-label {
       color: $grey-text-primary;
       font-size: 14px;
     }
+
     input {
       color: $grey-text-primary;
     }
+
     .mat-mdc-text-field-wrapper {
       background-color: $background-grey-secondary;
+
       input {
         color: $grey-text-primary !important;
       }
+
       textarea {
         color: $grey-text-primary;
       }
