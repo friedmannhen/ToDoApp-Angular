@@ -38,6 +38,10 @@ body.dark-theme {
               color: $dark-text-secondary
             }
           }
+          .mat-button-toggle-checked{
+            background-color: $background-dark-secondary;
+          }
+
         }
       }
 
@@ -205,6 +209,9 @@ body.grey-theme {
             mat-icon {
               color: $grey-primary
             }
+          }
+          .mat-button-toggle-checked{
+            background-color: $background-grey-body;
           }
 
         }
