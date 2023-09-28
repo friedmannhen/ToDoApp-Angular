@@ -48,9 +48,9 @@ export class TodoService {
     this.updateLocalStorage();
   }
 
-  public editTodo(updatedTodo: ITodo): void {
+  public updateTodo(updatedTodo: ITodo): void {
     const existingTodos: Array<ITodo> = this._todoSubject.value;
-    const index = existingTodos.indexOf(updatedTodo);
+    const index = existingTodos.findIndex((todo) => todo.id === updatedTodo.id);
     if (index !== -1) {
       existingTodos[index] = { ...existingTodos[index], ...updatedTodo };
       this._todoSubject.next(existingTodos);
@@ -80,7 +80,6 @@ export class TodoService {
   toggleTheme(themeType: string) {
     document.body.classList.remove('dark-theme');
     document.body.classList.remove('grey-theme');
-    console.log(themeType)
     if (themeType == 'dark') {
       document.body.classList.add('dark-theme');
     } else if (themeType == 'grey') {

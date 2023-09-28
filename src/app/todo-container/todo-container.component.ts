@@ -37,6 +37,5 @@ export class TodoComponentComponent {
     const dialogRef = this.dialog.open(NewTodoComponent, {
     width: '900px',height:'700px'
     });
-
   }
 }

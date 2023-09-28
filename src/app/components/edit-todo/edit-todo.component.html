@@ -1,21 +1,22 @@
 <div class="new-todo-container">
     <div class="header">
-        <h1>Add New Todo</h1>
+        <h1>Update Todo</h1>
     </div>
-    <form #f="ngForm" class="form" (ngSubmit)="onNewTodoSubmit()">
+    <form #f="ngForm" class="form" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline">
             <mat-label>Title</mat-label>
-            <input ngModel name="title" maxlength="30" required matInput>
+            <input [(ngModel)]="todo.title" name="title" maxlength="30" required matInput>
             <mat-error *ngIf="f.invalid">Field Is Empty!</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
-            <textarea ngModel name="description" matInput cdkTextareaAutosize></textarea>
+            <textarea [(ngModel)]="descriptionLines" name="description" matInput cdkTextareaAutosize 
+            cdkAutosizeMaxRows="20"></textarea>
         </mat-form-field>
         <div class="deadline">
             <mat-form-field class="date">
                 <mat-label>Deadline Date </mat-label>
-                <input ngModel name="date" matInput [matDatepicker]="picker" [min]="minDate"
+                <input [(ngModel)]="todo.endDate" name="date" matInput [matDatepicker]="picker" [min]="minDate"
                     (dateChange)="handleDateSelection($event)">
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -24,11 +25,11 @@
             <mat-form-field *ngIf="selectedDate" class="time">
                 <mat-label>Deadline Time</mat-label>
                 <mat-icon>schedule</mat-icon>
-                <input value="00:00" [disabled]="!selectedDate" ngModel name="time" matInput aria-label="24hr format"
+                <input [(ngModel)]="todo.endTime" name="time" matInput aria-label="24hr format"
                     [ngxTimepicker]="toggleIcon" [format]="24" readonly>
                 <ngx-material-timepicker [theme]="isDark ?  darkTheme  : null" #toggleIcon></ngx-material-timepicker>
             </mat-form-field>
         </div>
-        <button type="submit" mat-raised-button color="primary">Submit</button>
+        <button type="submit" mat-raised-button color="primary">Update</button>
     </form>
 </div>

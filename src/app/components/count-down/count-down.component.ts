@@ -11,13 +11,10 @@ import { TodoService } from 'src/app/services/todo.service';
 export class CountDownComponent {
   constructor(private todoService: TodoService) {}
   @Input() set todo(todo: ITodo) {
-    // this._deadlineDate = deadlineDate;
     this._todo = todo;
-    // console.log(deadlineDate);
   }
   private subsription: Subscription = new Subscription();
   public _todo: ITodo;
-  // public _deadlineDate: Date;
   private milliSecondsInASecond: number = 1000;
   private secondsInAMinute: number = 60;
   private minutesInAHour: number = 60;
@@ -44,7 +41,7 @@ export class CountDownComponent {
     this.subsription.unsubscribe();
   }
   private timeToMilliseconds(timeString: string): number {
-    if (timeString == '') return 0;
+    if (timeString == '' || !timeString) return 0;
     const [hours, minutes] = timeString.split(':').map(Number);
     const totalMilliseconds =
       hours * this.millisecondsPerHour + minutes * this.millisecondsPerMinute;

@@ -1,65 +1,68 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Inject } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
-import { v4 as uuidv4 } from 'uuid';
 @Component({
-  selector: 'app-new-todo',
-  templateUrl: './new-todo.component.html',
-  styleUrls: ['./new-todo.component.scss'],
+  selector: 'app-edit-todo',
+  templateUrl: './edit-todo.component.html',
+  styleUrls: ['./edit-todo.component.scss'],
 })
-export class NewTodoComponent {
+export class EditTodoComponent {
   constructor(
     private todoService: TodoService,
     public dialog: MatDialog,
-    private _snackBar: MatSnackBar
-  ) {}
+    private _snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.todo = data;
+    this.descriptionLines = this.todo.descriptionLines.join('\n');
+  }
   @ViewChild('f') form: NgForm;
   public minDate = new Date();
   public isChecked: boolean = false;
   public isDark: boolean;
-  public selectedDate: Date | null;
- 
+  public selectedDate: boolean = false;
+  public todo: ITodo;
+  public descriptionLines: string;
+
   ngOnInit(): void {
     this.isDark = this.todoService.getThemeType() != 'light' ? true : false;
+    if(this.data.endDate) this.selectedDate = true;
   }
   public handleDateSelection(selectedDate: any): void {
-    this.selectedDate = selectedDate;
+    this.selectedDate = true;
   }
-  public onNewTodoSubmit() {
+  public onSubmit() {
     if (!this.form.valid) {
       return;
     }
     const formValues = this.form.value;
-    const newTodo: ITodo = {
-      id: uuidv4(),
+    const updatedTodo: ITodo = {
+      id: this.data.id,
       title: formValues.title,
-      openDate: new Date(),
+      openDate: this.data.openDate,
       descriptionLines: formValues.description.split('\n'),
-      linesCompleted: Array.from(
-        { length: formValues.description.split('\n').length },
-        () => false
-      ),
+      linesCompleted:this.data.linesCompleted,
       endDate: formValues.date == '' ? null : formValues.date,
       endTime: formValues.time,
-      isCompleted: false,
-      isArchived: false,
-      selected: false,
-      timesOver: false,
+      isCompleted: this.data.isCompleted,
+      isArchived: this.data.isArchived,
+      selected: this.data.selected,
+      timesOver: this.data.timesOver,
     };
-    this.todoService.addNewTodo(newTodo);
+    this.todoService.updateTodo(updatedTodo);
     this.dialog.closeAll();
-    this._snackBar.open('New Todo Added!', 'close', {
+    this._snackBar.open('Todo has been updated!', 'close', {
       horizontalPosition: 'start',
       verticalPosition: 'bottom',
       duration: 2000,
     });
   }
-   //dark theme for time picker
-   darkTheme: NgxMaterialTimepickerTheme = {
+  //dark theme for time picker
+  darkTheme: NgxMaterialTimepickerTheme = {
     container: {
       bodyBackgroundColor: '#424242',
       buttonColor: '#fff',

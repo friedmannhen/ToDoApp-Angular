@@ -9,7 +9,7 @@
     flex-direction: column;
     .deadline {
       display: flex;
-      justify-content: space-between;
+      gap:10px;
       .date,
       .time {
         max-width: 250px;

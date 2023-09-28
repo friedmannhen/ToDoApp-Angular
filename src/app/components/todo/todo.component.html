@@ -7,19 +7,25 @@
     </div>
     <div *ngIf="todo" class="main-content">
         <mat-card-header class="header">
-            <mat-card-title>{{todo.title}}</mat-card-title>
+
+            <mat-card-title>
+                <mat-icon class="edit" matTooltipPosition="above" matTooltip="Edit"
+                    (click)="openDialog()">edit</mat-icon>
+                {{todo.title}}</mat-card-title>
             <app-count-down *ngIf="todo && todo.endDate" [todo]="todo"></app-count-down>
-            <mat-card-subtitle class="time-opened"><span>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm
-                    a"}}</span>
+            <mat-card-subtitle class="time-opened"><span>Time opened: {{todo.openDate | date:"MM/dd/yy "}} | </span>
+                <ng-container *ngIf="todo.endTime; else elseTemplate">
+                    <span>{{todo.endTime}} </span>
+                </ng-container>
+                <ng-template #elseTemplate>
+                    <span>00:00</span>
+                </ng-template>
             </mat-card-subtitle>
             <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
                 (click)="onArchiveTodo()">Archive</mat-chip-option>
         </mat-card-header>
         <mat-card-content class="content">
             <div class="content-header">
-                <button class="edit" mat-mini-fab matTooltip="Edit (Work In Progress...)" matTooltipPosition="right" color="primary">
-                    <mat-icon>edit</mat-icon>
-                </button>
                 <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
                     <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All"
                         color="primary">

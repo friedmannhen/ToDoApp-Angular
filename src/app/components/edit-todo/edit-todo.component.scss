@@ -1,0 +1,27 @@
+.new-todo-container {
+    padding: 20px;
+    .header {
+      display: flex;
+      justify-content: center;
+    }
+    .form {
+      display: flex;
+      flex-direction: column;
+      .deadline {
+        display: flex;
+        gap:10px;
+        .date,
+        .time {
+          max-width: 250px;
+          position: relative;
+          .mat-icon {
+            position: absolute;
+            right: -5px;
+            top: 15px;
+            z-index: -1;
+          }
+        }
+      }
+    }
+  }
+  

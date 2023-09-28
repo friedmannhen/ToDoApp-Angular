@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
+import { EditTodoComponent } from '../edit-todo/edit-todo.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-todo',
@@ -15,7 +17,7 @@ export class TodoComponent {
   get todo() {
     return this._todo;
   }
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, public dialog: MatDialog) {}
   ngOnInit(): void {
   }
 
@@ -46,5 +48,10 @@ export class TodoComponent {
   public PermenantlyDelete(): void {
     this.todoService.removePermenantly(this.todo);
     this.todo = null;
+  }
+  public openDialog(): void {
+    const dialogRef = this.dialog.open(EditTodoComponent, {
+    width: '900px',height:'700px',data:this.todo
+    });
   }
 }

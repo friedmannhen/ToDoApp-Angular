@@ -12,6 +12,7 @@ import { TodoComponentComponent } from './todo-container/todo-container.componen
 import { FormsModule } from '@angular/forms';
 import { CountDownComponent } from './components/count-down/count-down.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     TodoComponent,
     NewTodoComponent,
     TodoComponentComponent,
-    CountDownComponent
+    CountDownComponent,
+    EditTodoComponent
   ],
   imports: [
     BrowserModule,
