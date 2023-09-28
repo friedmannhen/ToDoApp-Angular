@@ -25,8 +25,6 @@ export class TodoComponent {
   }
   public onArchiveTodo(): void {
     this.todo.isArchived = !this.todo.isArchived;
-    console.log(this.todo.descriptionLines.length)
-
     this.todoService.updateLocalStorage();
   }
   public togglelineComplete(index: number): void {

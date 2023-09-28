@@ -1,11 +1,28 @@
 <div class="todos-component">
-    <div class="list-container">
-        <app-todo-list [todos]="todos"></app-todo-list>
+    <div class="main">
+        <mat-drawer-container>
+            <mat-drawer #drawer opened class="sidenav" mode="side">
+                <div class="list-container">
+                    <app-todo-list [todos]="todos"></app-todo-list>
+                </div>
+            </mat-drawer>
+
+            <div class="todo-container">
+                <app-todo [todo]="todo"></app-todo>
+            </div>
+        </mat-drawer-container>
     </div>
-    <div class="todo-container">
-        <app-todo [todo]="todo"></app-todo>
-    </div>
-    <button  matTooltip="Add New Todo.." above (click)="openDialog()" mat-fab color="primary" class="add-new-todo-btn">
-        <mat-icon>add</mat-icon>
-    </button>
+    <footer class="footer">
+        <mat-chip-option highlighted class="toggle-side-nav" selected mat-button (click)="drawer.toggle()">
+            Toggle list
+        </mat-chip-option>
+        <div class="copyright">
+            <mat-icon>copyright</mat-icon>
+            <span>Hen Friedmann | All Rights Reserved</span>
+        </div>
+        <button matTooltip="Add New Todo.." above (click)="openDialog()" mat-fab color="primary"
+            class="add-new-todo-btn">
+            <mat-icon>add</mat-icon>
+        </button>
+    </footer>
 </div>

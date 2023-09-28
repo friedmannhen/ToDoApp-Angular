@@ -2,7 +2,12 @@
 @import '/src//styles/theme.scss';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+.mat-button-toggle-checked{
+  background-color: $background-dark-secondary;
+  mat-icon{
+    color: $accent-dark;
+  }
+}
 .cdk-overlay-container { //new todo popup
     z-index: 500;
   }
@@ -21,5 +26,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   
   ::-webkit-scrollbar-track {
     background-color: #d0d0d0;
+    border-radius: 4px;
   }
   

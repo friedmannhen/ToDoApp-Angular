@@ -4,7 +4,7 @@
       <mat-icon>dark_mode</mat-icon>
     </mat-slide-toggle> -->
     <mat-button-toggle-group #theme="matButtonToggleGroup" name="theme" (change)="toggleTheme(theme.value)">
-      <mat-button-toggle value="light"><mat-icon>light_mode</mat-icon></mat-button-toggle>
+      <mat-button-toggle checked value="light"><mat-icon>light_mode</mat-icon></mat-button-toggle>
       <mat-button-toggle value="grey"><mat-icon>wb_twilight</mat-icon></mat-button-toggle>
       <mat-button-toggle value="dark"><mat-icon>dark_mode</mat-icon></mat-button-toggle>
     </mat-button-toggle-group>

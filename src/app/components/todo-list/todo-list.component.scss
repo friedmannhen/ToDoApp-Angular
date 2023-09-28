@@ -8,6 +8,12 @@
 .tab-icon {
   margin-right: 8px;
 }
+.todo-list{
+  height: calc(100vh - 250px);
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: auto;
+}
 .todo-list:first-child{
   margin-top: 5px;
 }

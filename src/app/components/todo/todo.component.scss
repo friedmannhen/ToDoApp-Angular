@@ -1,23 +1,6 @@
 .main {
-  height: calc(100% - 30px - 50px);
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-.content {
   height: 100%;
-  .Mark-All-container {
-    width: fit-content;
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-left: auto;
-    .mark-all,
-    .unmark-all {
-      width: 30px;
-      height: 30px;
-    }
-  }
+ 
 }
 .main-content,
 .empty-main-content {
@@ -26,18 +9,22 @@
   height: 100%;
 }
 
-
 .main-content,
 .main,
 .empty-main-content {
-border-radius: 10px;
+  border-radius: 10px;
 }
 
 .header {
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #eaeaea;
 }
+
 .empty-main-content {
   justify-content: center;
   align-items: center;
@@ -46,36 +33,65 @@ border-top-right-radius: 10px;
   rotate: -20deg;
   text-align: center;
 }
-.header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: #eaeaea;
-}
 
-.desctiptionLine {
-  font-family: "Roboto";
-  font-size: 17px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding: 2px;
+.content {
+  .content-header {
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+  }
+  .edit {
+    width: 35px;
+    height: 35px;
+  }
+  .Mark-All-container {
+    width: fit-content;
+    display: flex;
+    gap: 10px;
+    .mark-all,
+    .unmark-all {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  .desctiptionLine {
+    font-family: "Roboto";
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+  }
+  .descriptionLines-container {
+    height: calc(100vh - 380px);
+    overflow: scroll;
+    overflow-y: auto;
+    overflow-x: auto;
+  }
+  .desctiptionLine span {
+    cursor: pointer;
+  }
+  .bottom-line {
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .underline {
   text-decoration: line-through;
 }
 
-.desctiptionLine span:hover{
+.desctiptionLine span:hover {
   background-color: #dadada;
 }
 
 mat-card-content {
-  padding-top: 20px;
   padding-bottom: 20px;
-  overflow: scroll;
-  overflow-y: auto;
-  overflow-x: auto;
 }
 
 .archvie-Btn:hover {
@@ -85,14 +101,10 @@ mat-card-content {
 .done-Btn:hover {
   background-color: #7858b0;
 }
-
+.delete_forever{
+  margin-right: 20px;
+}
 .line-icon {
   width: 50px;
-  color: #EAEAEA;
+  color: #eaeaea;
 }
-.uuid-id{
-position: absolute;
-bottom: 10px;
-right: 10px;
-}
-

@@ -47,6 +47,17 @@ export class TodoService {
     this._todoSubject.next(existingTodos);
     this.updateLocalStorage();
   }
+
+  public editTodo(updatedTodo: ITodo): void {
+    const existingTodos: Array<ITodo> = this._todoSubject.value;
+    const index = existingTodos.indexOf(updatedTodo);
+    if (index !== -1) {
+      existingTodos[index] = { ...existingTodos[index], ...updatedTodo };
+      this._todoSubject.next(existingTodos);
+      this.updateLocalStorage();
+    }
+  }
+
   public removePermenantly(TodoToRemove: ITodo): void {
     const existingTodos: Array<ITodo> = this._todoSubject.value;
     const index: number = existingTodos.indexOf(TodoToRemove);

@@ -9,36 +9,46 @@
         <mat-card-header class="header">
             <mat-card-title>{{todo.title}}</mat-card-title>
             <app-count-down *ngIf="todo && todo.endDate" [todo]="todo"></app-count-down>
-            <mat-card-subtitle><span>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm a"}}</span>
+            <mat-card-subtitle class="time-opened"><span>Time opened: {{todo.openDate | date:"MM/dd/yy 'at' hh:mm
+                    a"}}</span>
             </mat-card-subtitle>
-            <mat-card-actions>
-                <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
-                    (click)="onArchiveTodo()">Archive</mat-chip-option>
-            </mat-card-actions>
+            <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
+                (click)="onArchiveTodo()">Archive</mat-chip-option>
         </mat-card-header>
         <mat-card-content class="content">
-            <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
-                <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All"
-                    color="primary" aria-label="Example mini fab with a heart icon">
-                    <mat-icon>done_all</mat-icon>
+            <div class="content-header">
+                <button class="edit" mat-mini-fab matTooltip="Edit (Work In Progress...)" matTooltipPosition="right" color="primary">
+                    <mat-icon>edit</mat-icon>
                 </button>
-                <button (click)="toggleAlllineUnComplete()" class="unmark-all" mat-mini-fab matTooltip="Unmark All"
-                    color="accent" aria-label="Example mini fab with a heart icon">
-                    <mat-icon>remove_done</mat-icon>
-                </button>
+                <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
+                    <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All"
+                        color="primary">
+                        <mat-icon>done_all</mat-icon>
+                    </button>
+                    <button (click)="toggleAlllineUnComplete()" class="unmark-all" mat-mini-fab matTooltip="Unmark All"
+                        color="accent">
+                        <mat-icon>remove_done</mat-icon>
+                    </button>
+                </div>
             </div>
-            <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine">
-                <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
-                    *ngIf="line.trim().length">label_important</mat-icon>
-                <span (click)="togglelineComplete(i)" [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
+            <div class="descriptionLines-container">
+                <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine">
+                    <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
+                        *ngIf="line.trim().length">label_important</mat-icon>
+                    <span (click)="togglelineComplete(i)" [class.underline]="todo.linesCompleted[i]">{{line}}</span><br>
+                </div>
+            </div>
+            <div class="bottom-line">
+                <mat-chip-option highlighted class="done-Btn" [selected]="todo.isCompleted"
+                    (click)="toggleCompleteTodo()">
+                    Done
+                </mat-chip-option>
+                <button class="delete_forever" mat-mini-fab *ngIf="todo && todo.isArchived" color="warn"
+                    (click)="PermenantlyDelete()" matTooltip="Permenantly Delete!"
+                    matTooltipPosition="above"><mat-icon>delete_forever</mat-icon>
+                </button>
             </div>
         </mat-card-content>
-        <mat-card-actions class="bottomline">
-            <mat-chip-option highlighted class="done-Btn" [selected]="todo.isCompleted"
-                (click)="toggleCompleteTodo()">Done</mat-chip-option>
-        </mat-card-actions>
-        <button *ngIf="todo && todo.isArchived" mat-raised-button color="warn" (click)="PermenantlyDelete()">Permenantly
-            Delete!</button>
     </div>
     <!-- <span class="uuid-id" *ngIf="todo"> Task ID: {{todo.id}} [Generated with uuid]</span> -->
 </mat-card>

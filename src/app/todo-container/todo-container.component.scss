@@ -1,31 +1,48 @@
 .todos-component {
   padding: 10px;
-  height: calc(100vh - 64px - 20px);
+  height: calc(100vh - 84px);
   display: flex;
-  gap: 10px;
+  flex-direction: column;
 }
-
+mat-drawer-container{
+  width: 100%;
+  height: fit-content;
+}
 .list-container {
-  width: 27%;
-  min-width: 210px;
+  height: calc(100vh - 193px);
+  width: 370px;
   border-radius: 10px;
+  margin-right: 10px;
   padding: 4px;
-  max-height: 100%;
-  overflow: scroll;
-  overflow-y: auto;
-  overflow-x: auto;
-}
 
+}
+.sidenav{
+  background-color: inherit;
+}
 .todo-container {
-  width: 75%;
+  width: 100%;
+  height: calc(100vh - 185px);
 }
-
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  height: 100%;
+}
+.toggle-side-nav{
+  margin-bottom: auto;
+  margin-top: 20px;
+}
+.copyright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  font-size: 13px;
+  gap: 5px;
+  left: calc(50% - 125px);
+}
 .add-new-todo-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
-
-.dark-theme *{
-  color:white
+  margin-bottom: 20px;
 }

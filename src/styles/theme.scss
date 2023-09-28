@@ -13,6 +13,7 @@ $accent-dark: #ffa000;
 // Define Dark Theme Variables
 // Background Colors
 $background-dark: #111111;
+$background-dark-3rd: #202224;
 $background-dark-secondary: #3a3a3a;
 $background-dark-body: #1b1b1b;
 
@@ -35,13 +36,15 @@ body.dark-theme {
             background-color: $background-dark-body;
 
             mat-icon {
-              color: $dark-text-secondary
+              color: $dark-text-secondary;
             }
           }
-          .mat-button-toggle-checked{
+          .mat-button-toggle-checked {
             background-color: $background-dark-secondary;
+            mat-icon {
+              color: $accent-dark;
+            }
           }
-
         }
       }
 
@@ -49,12 +52,14 @@ body.dark-theme {
         color: $dark-text-primary;
 
         .todos-component {
+          mat-drawer,
+          mat-drawer-content {
+            background-color: $background-dark-body;
+          }
           .list-container {
-
             .selected,
             .single-todo:active {
-              box-shadow: $accent-dark 0px 20px 60px -15px inset,
-
+              box-shadow: $accent-dark 0px 20px 60px -15px inset;
             }
 
             background-color: $background-dark-secondary;
@@ -73,7 +78,7 @@ body.dark-theme {
               color: $dark-text-primary;
 
               mat-card {
-                background-color: $background-dark-body;
+                background-color: $background-dark-3rd;
 
                 mat-card-content {
                   mat-card-subtitle {
@@ -89,6 +94,8 @@ body.dark-theme {
           }
 
           app-todo {
+            color: $dark-text-primary;
+
             mat-card-header {
               background-color: $background-dark-secondary;
 
@@ -110,7 +117,7 @@ body.dark-theme {
             mat-card-content,
             .main-content,
             .empty-main-content {
-              background-color: $background-dark-body;
+              background-color: $background-dark-3rd;
             }
 
             mat-card-content {
@@ -174,10 +181,8 @@ body.dark-theme {
   }
 }
 
-
-
-
 $background-grey: #526d82;
+$background-grey-3rd: #899ead;
 $background-grey-secondary: #9db2bf;
 $background-grey-body: #dde6ed;
 
@@ -187,11 +192,11 @@ $background-grey-body: #dde6ed;
 // $text-on-primary: #ffffff;
 // $text-on-secondary: #ffffff;
 // Define Dark Theme Variables
-$grey-primary: #27374D;
+$grey-primary: #27374d;
 $grey-primary: #27374d;
 $grey-background: #526d82;
 $grey-text-primary: #000000;
-$grey-text-secondary: #9DB2BF;
+$grey-text-secondary: #9db2bf;
 
 body.grey-theme {
   background-color: $background-grey-body;
@@ -207,26 +212,31 @@ body.grey-theme {
             background-color: $background-grey-secondary;
 
             mat-icon {
-              color: $grey-primary
+              color: $grey-primary;
             }
           }
-          .mat-button-toggle-checked{
+          .mat-button-toggle-checked {
             background-color: $background-grey-body;
+            mat-icon {
+              color: $accent-dark;
+            }
           }
-
         }
       }
 
       main {
         .todos-component {
+          mat-drawer,
+          mat-drawer-content {
+            background-color: $background-grey-body;
+          }
           .list-container {
             background-color: $background-grey-secondary;
-
             app-todo-list {
               color: $grey-text-primary;
 
               mat-card {
-                background-color: $background-grey-body;
+                 background-color: $background-grey-3rd;
               }
             }
           }
@@ -249,7 +259,8 @@ body.grey-theme {
             mat-card-content,
             .main-content,
             .empty-main-content {
-              background-color: $background-grey-body;
+              background-color: $background-grey-3rd;
+
             }
 
             mat-card-content {
@@ -292,5 +303,4 @@ body.grey-theme {
       }
     }
   }
-
 }
