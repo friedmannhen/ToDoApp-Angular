@@ -66,6 +66,10 @@
     display: flex;
     align-items: center;
     padding: 2px;
+    span{
+      display: flex;
+      align-items: center;
+    }
   }
   .descriptionLines-container {
     height: calc(100vh - 380px);
