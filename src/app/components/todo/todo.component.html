@@ -50,7 +50,7 @@
                     (click)="toggleCompleteTodo()">
                     Done
                 </mat-chip-option>
-                <button class="delete_forever" mat-mini-fab *ngIf="todo && todo.isArchived" color="warn"
+                <button class="delete_forever" mat-mini-fab *ngIf="todo" color="warn"
                     (click)="PermenantlyDelete()" matTooltip="Permenantly Delete!"
                     matTooltipPosition="above"><mat-icon>delete_forever</mat-icon>
                 </button>
