@@ -8,13 +8,16 @@ import { ITodo } from '../models/todo.interface';
 export class TodoService {
   constructor() {}
   private todos: Array<ITodo> = [];
+  private themeType: string = 'light';
   private _todoSubject: BehaviorSubject<Array<ITodo>> = new BehaviorSubject(
     this.todos
   );
   private _singleTodoSubject: BehaviorSubject<ITodo> = new BehaviorSubject(
     null
   );
-  private themeType: string = 'light';
+  private _activeTheme: BehaviorSubject<string> = new BehaviorSubject(
+    this.themeType
+  );
 
   public getTodos(): Observable<Array<ITodo>> {
     if (!this._todoSubject.value.length) {
@@ -69,15 +72,15 @@ export class TodoService {
       localStorage.clear();
     }
   }
-  public updateLocalStorage() {
+  public updateLocalStorage(): void {
     localStorage.setItem('todos', JSON.stringify(this._todoSubject.value));
   }
 
-  public getThemeType(): string {
-    return this.themeType;
+  public getThemeType(): Observable<string> {
+    return this._activeTheme.asObservable();
   }
 
-  toggleTheme(themeType: string) {
+  public toggleTheme(themeType: string): void {
     document.body.classList.remove('dark-theme');
     document.body.classList.remove('grey-theme');
     if (themeType == 'dark') {
@@ -85,7 +88,14 @@ export class TodoService {
     } else if (themeType == 'grey') {
       document.body.classList.add('grey-theme');
     }
-    this.themeType=themeType;
-
+    this._activeTheme.next(themeType);
+    localStorage.setItem('theme', this._activeTheme.value);
+  }
+  private startingTheme: string;
+  public setStartingTheme(): void {
+    this.startingTheme = localStorage.getItem('theme');
+    if(this.startingTheme){
+      this.toggleTheme(this.startingTheme);
+    }
   }
 }

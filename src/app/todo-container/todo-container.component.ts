@@ -28,6 +28,7 @@ export class TodoComponentComponent {
         this.todo = data;
       })
     );
+    this.todoService.setStartingTheme();
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

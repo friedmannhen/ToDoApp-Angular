@@ -27,7 +27,7 @@
                 <mat-icon>schedule</mat-icon>
                 <input [(ngModel)]="todo.endTime" name="time" matInput aria-label="24hr format"
                     [ngxTimepicker]="toggleIcon" [format]="24" readonly>
-                <ngx-material-timepicker [theme]="isDark ?  darkTheme  : null" #toggleIcon></ngx-material-timepicker>
+                <ngx-material-timepicker [theme]="activeTheme == 'light' ?   null : darkTheme" #toggleIcon></ngx-material-timepicker>
             </mat-form-field>
         </div>
         <button type="submit" mat-raised-button color="primary">Update</button>

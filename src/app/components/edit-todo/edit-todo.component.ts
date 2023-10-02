@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
+import { Subscription } from 'rxjs';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
 @Component({
@@ -11,6 +12,8 @@ import { TodoService } from 'src/app/services/todo.service';
   styleUrls: ['./edit-todo.component.scss'],
 })
 export class EditTodoComponent {
+  private subscription: Subscription = new Subscription();
+
   constructor(
     private todoService: TodoService,
     public dialog: MatDialog,
@@ -23,14 +26,20 @@ export class EditTodoComponent {
   @ViewChild('f') form: NgForm;
   public minDate = new Date();
   public isChecked: boolean = false;
-  public isDark: boolean;
+  public activeTheme: string;
   public selectedDate: boolean = false;
   public todo: ITodo;
   public descriptionLines: string;
 
   ngOnInit(): void {
-    this.isDark = this.todoService.getThemeType() != 'light' ? true : false;
-    if(this.data.endDate) this.selectedDate = true;
+    this.subscription.add(
+      this.todoService.getThemeType().subscribe((data) => {
+        this.activeTheme = data;
+      })
+    );
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
   public handleDateSelection(selectedDate: any): void {
     this.selectedDate = true;
