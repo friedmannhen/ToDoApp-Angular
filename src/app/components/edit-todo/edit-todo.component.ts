@@ -1,4 +1,4 @@
-import { Component, ViewChild, Inject } from '@angular/core';
+import { Component, ViewChild, Inject, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -30,6 +30,24 @@ export class EditTodoComponent {
   public selectedDate: boolean = false;
   public todo: ITodo;
   public descriptionLines: string;
+
+
+  //testing
+  @ViewChild('lineIconsContainer') lineIconsContainer: ElementRef;
+
+  ngAfterViewInit() {
+    this.updateLineIcons();
+  }
+
+  updateLineIcons() {
+    const lines = this.descriptionLines.split('\n');
+    const iconsHTML = lines.map(() => '<svg style="fill:#6a8aff" height="24" viewBox="0 -960 960 960" width="24"><path d="m120-200 180-280-180-280h480q20 0 37.5 9t28.5 25l174 246-174 246q-11 16-28.5 25t-37.5 9H120Zm146-80h334l142-200-142-200H266l130 200-130 200Zm130-200L266-680l130 200-130 200 130-200Z"/></svg>').join('');
+    this.lineIconsContainer.nativeElement.innerHTML = iconsHTML;
+  }
+  //testing
+
+
+
 
   ngOnInit(): void {
     this.subscription.add(

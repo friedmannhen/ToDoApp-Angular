@@ -9,9 +9,10 @@
             <mat-error *ngIf="f.invalid">Field Is Empty!</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Description</mat-label>
-            <textarea [(ngModel)]="descriptionLines" name="description" matInput cdkTextareaAutosize 
-            cdkAutosizeMaxRows="20"></textarea>
+            <mat-label style="margin-left: 30px;">Description</mat-label>
+            <div class="line-icons" #lineIconsContainer></div>
+            <textarea [(ngModel)]="descriptionLines" name="description" matInput cdkTextareaAutosize
+                cdkAutosizeMaxRows="20" (input)="updateLineIcons()"></textarea>
         </mat-form-field>
         <div class="deadline">
             <mat-form-field class="date">
@@ -27,7 +28,8 @@
                 <mat-icon>schedule</mat-icon>
                 <input [(ngModel)]="todo.endTime" name="time" matInput aria-label="24hr format"
                     [ngxTimepicker]="toggleIcon" [format]="24" readonly>
-                <ngx-material-timepicker [theme]="activeTheme == 'light' ?   null : darkTheme" #toggleIcon></ngx-material-timepicker>
+                <ngx-material-timepicker [theme]="activeTheme == 'light' ?   null : darkTheme"
+                    #toggleIcon></ngx-material-timepicker>
             </mat-form-field>
         </div>
         <button type="submit" mat-raised-button color="primary">Update</button>

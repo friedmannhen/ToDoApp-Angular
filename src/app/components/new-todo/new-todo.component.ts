@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -25,7 +25,22 @@ export class NewTodoComponent {
   public isChecked: boolean = false;
   public activeTheme: string;
   public selectedDate: Date | null;
- 
+
+  //testing
+  @ViewChild('lineIconsContainer') lineIconsContainer: ElementRef;
+  description: string = '';
+
+  ngAfterViewInit() {
+    this.updateLineIcons();
+  }
+
+  updateLineIcons() {
+    const lines = this.description.split('\n');
+    const iconsHTML = lines.map(() => '<svg style="fill:#6a8aff" height="24" viewBox="0 -960 960 960" width="24"><path d="m120-200 180-280-180-280h480q20 0 37.5 9t28.5 25l174 246-174 246q-11 16-28.5 25t-37.5 9H120Zm146-80h334l142-200-142-200H266l130 200-130 200Zm130-200L266-680l130 200-130 200 130-200Z"/></svg>').join('');
+    this.lineIconsContainer.nativeElement.innerHTML = iconsHTML;
+  }
+  //testing
+
   ngOnInit(): void {
     this.subscription.add(
       this.todoService.getThemeType().subscribe((data) => {
@@ -68,8 +83,8 @@ export class NewTodoComponent {
       duration: 2000,
     });
   }
-   //dark theme for time picker
-   darkTheme: NgxMaterialTimepickerTheme = {
+  //dark theme for time picker
+  darkTheme: NgxMaterialTimepickerTheme = {
     container: {
       bodyBackgroundColor: '#424242',
       buttonColor: '#fff',

@@ -25,3 +25,16 @@
     }
   }
   
+  .line-icons {
+    position: absolute;
+    overflow-y: auto;  
+    top:16px;
+    left:0;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+
+textarea {
+  padding-left: 30px; /* Adjust as needed based on the icon's width and position */
+}
