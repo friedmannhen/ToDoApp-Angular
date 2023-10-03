@@ -9,7 +9,7 @@
             <mat-error *ngIf="f.invalid">Field Is Empty!</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label style="margin-left: 30px;">Description</mat-label>
+            <mat-label style="margin-left: 30px;">Subtasks</mat-label>
             <div class="line-icons" #lineIconsContainer></div>
             <textarea [(ngModel)]="descriptionLines" name="description" matInput cdkTextareaAutosize
                 cdkAutosizeMaxRows="20" (input)="updateLineIcons()"></textarea>
