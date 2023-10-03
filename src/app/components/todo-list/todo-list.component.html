@@ -20,8 +20,8 @@
                     <mat-card-content>
                         <mat-card-title><span [ngClass]="{completed:item.isCompleted}">
                                 {{item.title}}</span></mat-card-title>
-                        <mat-card-subtitle class="open-end-dates">
-                            <span *ngIf="item.endDate">Deadline: {{item.endDate | date:"dd/MM/yy"}}&nbsp;&nbsp;&nbsp;|</span>
+                        <mat-card-subtitle *ngIf="item.endDate" class="open-end-dates">
+                            <span>Deadline: {{item.endDate | date:"dd/MM/yy"}}&nbsp;&nbsp;&nbsp;|</span>
                             <ng-container *ngIf="item.endTime; else elseTemplate">
                                 <span>{{item.endTime}} </span>
                             </ng-container>
