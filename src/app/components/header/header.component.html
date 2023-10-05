@@ -8,10 +8,15 @@
       <mat-button-toggle   matTooltipPosition="below" matTooltip="Dark" [checked]="activetheme =='dark'"
         value="dark"><mat-icon>dark_mode</mat-icon></mat-button-toggle>
     </mat-button-toggle-group>
-    <!-- <span class="them-btn-text">Dark Mode</span> -->
   </div>
   <span>ToDo</span>
-  <button mat-icon-button class="icon" aria-label="Example icon-button with menu icon">
-    <!-- <mat-icon>settings</mat-icon> -->
-  </button>
+  <div>
+    <mat-icon matTooltipPosition="below" matTooltip="Use these icons to save everything to a JSON file so you can import it to a different browsers/computers" >info</mat-icon>
+
+  <button  matTooltipPosition="below"  matTooltip="Download JSON File" mat-icon-button class="icon" (click)="exporLoaclStorage()">
+    <mat-icon>ios_share</mat-icon>
+  </button> 
+  <button  matTooltipPosition="below" matTooltip="Uploade JSON File" mat-icon-button class="icon" (click)="uploadJson()">
+    <mat-icon>upload_file</mat-icon>
+  </button></div>
 </mat-toolbar>

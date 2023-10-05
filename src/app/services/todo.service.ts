@@ -94,8 +94,49 @@ export class TodoService {
   private startingTheme: string;
   public setStartingTheme(): void {
     this.startingTheme = localStorage.getItem('theme');
-    if(this.startingTheme){
+    if (this.startingTheme) {
       this.toggleTheme(this.startingTheme);
     }
+  }
+
+  public exportAndDownloadLocalStorage() {
+    const data = JSON.stringify(localStorage);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'localStorageData.json';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+  public importFileAndSetLocalStorage(inputFile: File): void {
+    const fileReader = new FileReader();
+    
+    fileReader.onload = function (event: any): void {
+      const importedData: string = event.target.result;
+
+      try {
+        const parsedData: Record<string, any> = JSON.parse(importedData);
+        if (!('todos' in parsedData)) {
+          throw new Error('Missing "todo" key in the JSON file.');
+        }
+        for (const key in parsedData) {
+          if (parsedData.hasOwnProperty(key)) {
+            localStorage.setItem(key, parsedData[key]);
+          }
+        }
+
+        console.log('Imported data into local storage.');
+        location.reload();
+      } catch (error) {
+        console.error('Error parsing JSON data:', error);
+        alert(
+          'Not a valid JSON file Or the JSON file does not contains the right data'
+        );
+      }
+    };
+
+    fileReader.readAsText(inputFile);
   }
 }
