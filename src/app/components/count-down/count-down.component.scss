@@ -1,9 +1,12 @@
 .count-down-container{
     display: flex;
     width: fit-content;
-    gap:20px;
-    color:rgb(0 0 0 / 54%)
-    
+    gap:5px;
+    color:rgb(0 0 0 / 54%);
+    flex-wrap: wrap;
+    h1,h2{
+        margin:0px
+    }
 }
 
 .loader{

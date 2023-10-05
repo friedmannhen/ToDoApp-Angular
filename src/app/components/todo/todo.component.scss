@@ -20,6 +20,7 @@
   padding-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
+  overflow: auto;
   justify-content: space-between;
   background-color: #eaeaea;
   .edit {
@@ -34,6 +35,7 @@
 .empty-main-content {
   justify-content: center;
   align-items: center;
+
 }
 .empty-main-content h1 {
   rotate: -20deg;

@@ -44,10 +44,8 @@ export class HeaderComponent {
       if (selectedFile) {
         this.todoService.importFileAndSetLocalStorage(selectedFile);
       }
-      // Remove the hidden file input from the DOM
       document.body.removeChild(hiddenFileInput);
     });
-
     hiddenFileInput.click();
   }
 }
