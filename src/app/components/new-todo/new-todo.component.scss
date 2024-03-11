@@ -1,14 +1,17 @@
 .new-todo-container {
   padding: 20px;
-  .close-icon{
+  .close-icon {
     position: absolute;
-    right:20px;
+    right: 20px;
     transition: 0.2s;
   }
-  .close-icon:hover{
+  .close-icon:hover {
+    scale:1.1;
     cursor: pointer;
-    scale: 1.3;
-    color:rgb(236, 54, 54);
+  }
+  .close-icon:active {
+    color: rgb(236, 54, 54);
+    scale: 0.8;
   }
   .header {
     display: flex;
@@ -35,15 +38,15 @@
   }
 }
 
-  .line-icons {
-    position: absolute;
-    overflow-y: auto;  
-    top:16px;
-    left:0;
-    max-height: 300px;
-    display: flex;
-    flex-direction: column;
-  }
+.line-icons {
+  position: absolute;
+  overflow-y: auto;
+  top: 16px;
+  left: 0;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
 
 textarea {
   padding-left: 30px; /* Adjust as needed based on the icon's width and position */

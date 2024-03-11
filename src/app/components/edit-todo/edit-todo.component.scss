@@ -1,14 +1,17 @@
 .new-todo-container {
     padding: 20px;
-    .close-icon{
+    .close-icon {
       position: absolute;
-      right:20px;
+      right: 20px;
       transition: 0.2s;
     }
-    .close-icon:hover{
+    .close-icon:hover {
+      scale:1.1;
       cursor: pointer;
-      scale: 1.3;
-      color:rgb(236, 54, 54);
+    }
+    .close-icon:active {
+      color: rgb(236, 54, 54);
+      scale: 0.8;
     }
     .header {
       display: flex;
