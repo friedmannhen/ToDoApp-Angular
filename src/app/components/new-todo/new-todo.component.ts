@@ -83,6 +83,9 @@ export class NewTodoComponent {
       duration: 2000,
     });
   }
+  public onClose(): void {
+    this.dialog.closeAll();
+  }
   //dark theme for time picker
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {

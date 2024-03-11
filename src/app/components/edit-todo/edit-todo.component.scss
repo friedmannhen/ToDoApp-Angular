@@ -1,5 +1,15 @@
 .new-todo-container {
     padding: 20px;
+    .close-icon{
+      position: absolute;
+      right:20px;
+      transition: 0.2s;
+    }
+    .close-icon:hover{
+      cursor: pointer;
+      scale: 1.3;
+      color:rgb(236, 54, 54);
+    }
     .header {
       display: flex;
       justify-content: center;
