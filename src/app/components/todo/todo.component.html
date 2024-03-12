@@ -42,7 +42,13 @@
                     <span (click)="togglelineComplete(i)">
                         <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
                             *ngIf="line.trim().length">label_important</mat-icon>
-                        <span [class.underline]="todo.linesCompleted[i]">{{line}}</span></span>
+                        <div *ngIf="this.activetheme == 'dark'; else elseBlock">
+                            <span [class.completed-line-dark]="todo.linesCompleted[i]">{{line}}</span>
+                        </div>
+                        <ng-template #elseBlock>
+                            <span [class.completed-line-light]="todo.linesCompleted[i]">{{line}}</span>
+                        </ng-template>
+                    </span>
                 </div>
             </div>
             <div class="bottom-line">

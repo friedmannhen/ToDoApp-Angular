@@ -92,10 +92,32 @@
   }
 }
 
-.underline {
-  text-decoration: line-through;
+.completed-line-light {
+  position: relative;
 }
-
+.completed-line-light::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px; /* Adjust thickness of the line */
+  background-color: black; /* Adjust color of the line */
+  opacity: 0.3; /* Adjust opacity */
+}
+.completed-line-dark {
+  position: relative;
+}
+.completed-line-dark::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px; /* Adjust thickness of the line */
+  background-color: white; /* Adjust color of the line */
+  opacity: 0.6; /* Adjust opacity */
+}
 .desctiptionLine span:hover {
   transition: all 300ms;
 }
