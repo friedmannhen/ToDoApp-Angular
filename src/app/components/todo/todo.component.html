@@ -21,6 +21,7 @@
         </mat-card-header>
         <mat-card-content class="content">
             <div class="content-header">
+                <div id="completed-count"><span class="count-number">{{getCompletedLineCount()}}</span>Out Of<span class="count-number">{{todo.descriptionLines.length}}</span></div>
                 <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
                     <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All"
                         color="primary">

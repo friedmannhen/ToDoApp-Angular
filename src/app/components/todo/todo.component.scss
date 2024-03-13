@@ -49,17 +49,30 @@
     height: fit-content;
     margin-bottom: 10px;
     margin-top: 10px;
+    #completed-count{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid ;
+      border-radius: 5px;
+      padding-inline: 5px;
+      height: 21px;
+      .count-number{
+        margin-inline: 3px;
+        font-weight: bold;
+      }
+    }
   }
 
   .Mark-All-container {
     display: flex;
     justify-content: flex-end;
-    width: 100%;
     gap: 10px;
     .mark-all,
     .unmark-all {
       width: 35px;
       height: 35px;
+    
     }
   }
   .desctiptionLine {

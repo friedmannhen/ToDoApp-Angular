@@ -36,6 +36,9 @@ export class TodoComponent {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+  getCompletedLineCount(): number {
+    return this.todo.linesCompleted.filter(completed => completed).length;
+  }
   public toggleCompleteTodo(): void {
     this.todo.isCompleted = !this.todo.isCompleted;
     this.todoService.updateLocalStorage();
