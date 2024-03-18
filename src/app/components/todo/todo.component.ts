@@ -39,6 +39,9 @@ export class TodoComponent {
   getCompletedLineCount(): number {
     return this.todo.linesCompleted.filter(completed => completed).length;
   }
+  getTotalLineCount(){
+    return this.todo.descriptionLines.filter(text => text !='').length;
+  }
   public toggleCompleteTodo(): void {
     this.todo.isCompleted = !this.todo.isCompleted;
     this.todoService.updateLocalStorage();
