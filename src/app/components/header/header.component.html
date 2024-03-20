@@ -1,22 +1,28 @@
 <mat-toolbar class="header-main">
   <div class="theme-btn">
     <mat-button-toggle-group #theme="matButtonToggleGroup" name="theme" (change)="toggleTheme(theme.value)">
-      <mat-button-toggle  matTooltipPosition="below" matTooltip="Light" [checked]="activetheme =='light'"
+      <mat-button-toggle matTooltipPosition="below" matTooltip="Light" [checked]="activetheme =='light'"
         value="light"><mat-icon>light_mode</mat-icon></mat-button-toggle>
-      <mat-button-toggle   matTooltipPosition="below" matTooltip="Grey" [checked]="activetheme =='grey'"
+      <mat-button-toggle matTooltipPosition="below" matTooltip="Grey" [checked]="activetheme =='grey'"
         value="grey"><mat-icon>wb_twilight</mat-icon></mat-button-toggle>
-      <mat-button-toggle   matTooltipPosition="below" matTooltip="Dark" [checked]="activetheme =='dark'"
+      <mat-button-toggle matTooltipPosition="below" matTooltip="Dark" [checked]="activetheme =='dark'"
         value="dark"><mat-icon>dark_mode</mat-icon></mat-button-toggle>
     </mat-button-toggle-group>
   </div>
-  <span>ToDo</span>
+  <div class="logo-container">
+    <img src="assets/todoLogo.png" id="logo" alt="Logo" />
+  </div>
   <div>
-    <mat-icon style="cursor: help;" matTooltipPosition="below" matTooltip="Use these icons to save everything to a JSON file so you can import it to a different browsers/computers" >info</mat-icon>
+    <mat-icon style="cursor: help;" matTooltipPosition="below"
+      matTooltip="Use these icons to save everything to a JSON file so you can import it to a different browsers/computers">info</mat-icon>
 
-  <button  matTooltipPosition="below"  matTooltip="Download JSON File" mat-icon-button class="icon" (click)="exporLoaclStorage()">
-    <mat-icon>ios_share</mat-icon>
-  </button> 
-  <button  matTooltipPosition="below" matTooltip="Uploade JSON File" mat-icon-button class="icon" (click)="uploadJson()">
-    <mat-icon>upload_file</mat-icon>
-  </button></div>
+    <button matTooltipPosition="below" matTooltip="Download JSON File" mat-icon-button class="icon"
+      (click)="exporLoaclStorage()">
+      <mat-icon>ios_share</mat-icon>
+    </button>
+    <button matTooltipPosition="below" matTooltip="Uploade JSON File" mat-icon-button class="icon"
+      (click)="uploadJson()">
+      <mat-icon>upload_file</mat-icon>
+    </button>
+  </div>
 </mat-toolbar>

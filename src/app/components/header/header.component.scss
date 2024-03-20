@@ -6,6 +6,31 @@
   align-items: center;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
+  .logo-container {
+    position: relative;
+    height: 70px;
+    width: 130px;
+    z-index: 0;
+
+    #logo {
+      position: absolute;
+      width: 130px;
+      height: 70px;
+      z-index: 10;
+    }
+  }
+  .logo-container::after {
+    content: "";
+    width:106px;
+    height: 45px;
+    border-radius: 10px;
+    top:13px;
+    left: 13.5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    background-color: white;
+
+  }
   .theme-btn {
     color: $background-dark;
     // mat-icon {
