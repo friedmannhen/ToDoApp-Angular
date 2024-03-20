@@ -67,6 +67,7 @@ export class TodoComponent {
     this.todoService.updateLocalStorage();
   }
   public PermenantlyDelete(): void {
+    if (!confirm( 'This will Delete permanently... \nAre you sure you?'))return;
     this.todoService.removePermenantly(this.todo);
     this.todo = null;
   }

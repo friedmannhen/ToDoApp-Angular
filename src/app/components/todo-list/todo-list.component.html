@@ -20,14 +20,9 @@
                     <mat-card-content>
                         <mat-card-title><span [ngClass]="{completed:item.isCompleted}">
                                 {{item.title}}</span></mat-card-title>
-                        <mat-card-subtitle *ngIf="item.endDate" class="open-end-dates">
-                            <span>Deadline: {{item.endDate | date:"dd/MM/yy"}}&nbsp;&nbsp;&nbsp;|</span>
-                            <ng-container *ngIf="item.endTime; else elseTemplate">
-                                <span>{{item.endTime}} </span>
-                            </ng-container>
-                            <ng-template #elseTemplate>
-                                <span>00:00</span>
-                            </ng-template>
+                        <mat-card-subtitle  class="open-end-dates">
+                            <span>Opened: {{item.openDate | date:"dd/MM/yy"}}</span>
+                            <span *ngIf="item.endDate">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Deadline: {{item.endDate | date:"dd/MM/yy"}}</span>
                         </mat-card-subtitle>
                     </mat-card-content>
                     <div class="completed-icon" *ngIf="item.isCompleted">

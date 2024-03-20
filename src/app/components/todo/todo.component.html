@@ -13,7 +13,7 @@
                     (click)="openDialog()">edit</mat-icon>
                 {{todo.title}}</mat-card-title>
             <app-count-down *ngIf="todo && todo.endDate" [todo]="todo"></app-count-down>
-            <mat-card-subtitle class="time-opened"><span>Opened at: {{todo.openDate | date:"MM/dd/yy "}},
+            <mat-card-subtitle class="time-opened"><span>Opened at: {{todo.openDate | date:"dd/MM/yy "}},
                     {{todo.openDate | date: 'HH:mm' }}</span>
             </mat-card-subtitle>
             <mat-chip-option class="archvie-Btn" color="accent" highlighted [selected]="todo.isArchived"
