@@ -14,9 +14,13 @@ export class TodoComponentComponent {
 
   public todo: ITodo;
   public todos: ITodo[];
+  isListShown: boolean = true;
 
   constructor(public dialog: MatDialog, private todoService: TodoService) {}
 
+  toggleList(): void {
+    this.isListShown = !this.isListShown;
+  }
   ngOnInit(): void {
     this.subscription.add(
       this.todoService.getTodos().subscribe((data) => {
