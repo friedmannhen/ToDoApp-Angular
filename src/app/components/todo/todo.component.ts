@@ -13,14 +13,15 @@ import { Subscription } from 'rxjs';
 })
 export class TodoComponent {
   private subscription: Subscription = new Subscription();
+  public todo: ITodo;
 
-  @Input() set todo(todo: ITodo) {
-    this._todo = todo;
-  }
-  private _todo: ITodo;
-  get todo() {
-    return this._todo;
-  }
+  // @Input() set todo(todo: ITodo) {
+  //   this._todo = todo;
+  // }
+  // private _todo: ITodo;
+  // get todo() {
+  //   return this._todo;
+  // }
   constructor(private todoService: TodoService, public dialog: MatDialog) {}
   public activetheme: string;
 
@@ -30,6 +31,12 @@ export class TodoComponent {
         this.activetheme = data;
         console.log(data);
       })
+      
+    );
+        this.subscription.add(
+      this.todoService.getSelectedTodo().subscribe((data) => {
+        this.todo = data;
+      })
     );
   }
 
@@ -37,7 +44,7 @@ export class TodoComponent {
     this.subscription.unsubscribe();
   }
   getCompletedLineCount(): number {
-    return this.todo.linesCompleted.filter(completed => completed).length;
+    return this.todo.linesCompleted.slice(0, this.getTotalLineCount()).filter(completed => completed).length;
   }
   getTotalLineCount(){
     return this.todo.descriptionLines.filter(text => text !='').length;

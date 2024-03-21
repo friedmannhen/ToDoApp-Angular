@@ -21,7 +21,8 @@
         </mat-card-header>
         <mat-card-content class="content">
             <div class="content-header">
-                <div id="completed-count"><span class="count-number">{{getCompletedLineCount()}}</span>Out Of<span class="count-number">{{getTotalLineCount()}}</span></div>
+                <div id="completed-count"><span class="count-number">{{getCompletedLineCount()}}</span>Out Of<span
+                        class="count-number">{{getTotalLineCount()}}</span></div>
                 <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
                     <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All"
                         color="primary">
@@ -39,10 +40,10 @@
                         <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
                             *ngIf="line.trim().length">label_important</mat-icon>
                         <div *ngIf="this.activetheme == 'dark'; else elseBlock">
-                            <span [class.completed-line-dark]="todo.linesCompleted[i]">{{line}}</span>
+                            <span [class.completed-line-dark]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
                         </div>
                         <ng-template #elseBlock>
-                            <span [class.completed-line-light]="todo.linesCompleted[i]">{{line}}</span>
+                            <span [class.completed-line-light]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
                         </ng-template>
                     </span>
                 </div>

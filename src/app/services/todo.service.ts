@@ -58,6 +58,7 @@ export class TodoService {
       existingTodos[index] = { ...existingTodos[index], ...updatedTodo };
       this._todoSubject.next(existingTodos);
       this.updateLocalStorage();
+      this.setSelectedTodo(updatedTodo);
     }
   }
 
