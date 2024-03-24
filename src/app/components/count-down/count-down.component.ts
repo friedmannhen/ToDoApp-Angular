@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Subscription, interval, isEmpty } from 'rxjs';
 import { ITodo } from 'src/app/models/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
@@ -39,6 +39,9 @@ export class CountDownComponent {
   }
   ngOnDestroy(): void {
     this.subsription.unsubscribe();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    this.timesOver=false
   }
   private timeToMilliseconds(timeString: string): number {
     if (timeString == '' || !timeString) return 0;
