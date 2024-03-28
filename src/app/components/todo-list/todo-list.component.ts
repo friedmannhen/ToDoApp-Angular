@@ -24,5 +24,6 @@ export class TodoListComponent {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.todos, event.previousIndex, event.currentIndex);
+    this.todoService.updateLocalStorage();
   }
 }
