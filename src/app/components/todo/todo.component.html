@@ -22,7 +22,10 @@
         <mat-card-content class="content">
             <div class="content-header">
                 <div id="completed-count"><span class="count-number">{{getCompletedLineCount()}}</span>Out Of<span
-                        class="count-number">{{getTotalLineCount()}}</span></div>
+                        class="count-number">{{getTotalLineCount()}}</span>
+                        <label for="undone" style="border-left: 1px solid white; padding-left: 10px;">Show Undone Only</label>
+                        <input id="undone" [(ngModel)]="displayUndone" type="checkbox"/>
+                    </div>
                 <div *ngIf="todo.descriptionLines.length>1" class="Mark-All-container">
                     <button (click)="toggleAlllineComplete()" class="mark-all" mat-mini-fab matTooltip="Mark All"
                         color="primary">
@@ -36,16 +39,32 @@
             </div>
             <div class="descriptionLines-container">
                 <div *ngFor="let line of todo.descriptionLines; let i = index" class="desctiptionLine">
-                    <span (click)="togglelineComplete(i)">
-                        <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
-                            *ngIf="line.trim().length">label_important</mat-icon>
-                        <div *ngIf="this.activetheme == 'dark'; else elseBlock">
-                            <span [class.completed-line-dark]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
-                        </div>
-                        <ng-template #elseBlock>
-                            <span [class.completed-line-light]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
-                        </ng-template>
-                    </span>
+                    <ng-container *ngIf="!displayUndone; else elseTemplate"> 
+                        <span (click)="togglelineComplete(i)">
+                            <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
+                                *ngIf="line.trim().length">label_important</mat-icon>
+                            <div *ngIf="this.activetheme == 'dark'; else elseBlock">
+                                <span [class.completed-line-dark]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
+                            </div>
+                            <ng-template #elseBlock>
+                                <span
+                                    [class.completed-line-light]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
+                            </ng-template>
+                        </span>
+                    </ng-container>
+                    <ng-template #elseTemplate>
+                        <span (click)="togglelineComplete(i)" *ngIf="!todo.linesCompleted[i]">
+                            <mat-icon class="line-icon" [ngStyle]="{'color':todo.linesCompleted[i] ? '#7DECB3' : '' }"
+                                *ngIf="line.trim().length">label_important</mat-icon>
+                            <div *ngIf="this.activetheme == 'dark'; else elseBlock">
+                                <span [class.completed-line-dark]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
+                            </div>
+                            <ng-template #elseBlock>
+                                <span
+                                    [class.completed-line-light]="todo.linesCompleted[i] && line !='' ">{{line}}</span>
+                            </ng-template>
+                        </span>
+                    </ng-template>
                 </div>
             </div>
             <div class="bottom-line">

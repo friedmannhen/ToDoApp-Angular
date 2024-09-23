@@ -5,7 +5,6 @@ import { EditTodoComponent } from '../edit-todo/edit-todo.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -14,7 +13,7 @@ import { Subscription } from 'rxjs';
 export class TodoComponent {
   private subscription: Subscription = new Subscription();
   public todo: ITodo;
-
+  displayUndone = false;
   // @Input() set todo(todo: ITodo) {
   //   this._todo = todo;
   // }
@@ -31,9 +30,8 @@ export class TodoComponent {
         this.activetheme = data;
         console.log(data);
       })
-      
     );
-        this.subscription.add(
+    this.subscription.add(
       this.todoService.getSelectedTodo().subscribe((data) => {
         this.todo = data;
       })
@@ -44,10 +42,12 @@ export class TodoComponent {
     this.subscription.unsubscribe();
   }
   getCompletedLineCount(): number {
-    return this.todo.linesCompleted.slice(0, this.getTotalLineCount()).filter(completed => completed).length;
+    return this.todo.linesCompleted
+      .slice(0, this.getTotalLineCount())
+      .filter((completed) => completed).length;
   }
-  getTotalLineCount(){
-    return this.todo.descriptionLines.filter(text => text !='').length;
+  getTotalLineCount() {
+    return this.todo.descriptionLines.filter((text) => text != '').length;
   }
   public toggleCompleteTodo(): void {
     this.todo.isCompleted = !this.todo.isCompleted;
@@ -74,13 +74,15 @@ export class TodoComponent {
     this.todoService.updateLocalStorage();
   }
   public PermenantlyDelete(): void {
-    if (!confirm( 'This will Delete permanently... \nAre you sure you?'))return;
+    if (!confirm('This will Delete permanently... \nAre you sure you?')) return;
     this.todoService.removePermenantly(this.todo);
     this.todo = null;
   }
   public openDialog(): void {
     const dialogRef = this.dialog.open(EditTodoComponent, {
-    width: '900px',height:'700px',data:this.todo
+      width: '900px',
+      height: '700px',
+      data: this.todo,
     });
   }
 }
